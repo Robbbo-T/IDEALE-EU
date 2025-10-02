@@ -1,0 +1,52 @@
+# UTCS CI Configuration
+# Validation and compliance checks
+
+validation:
+  manifest:
+    required: true
+    path: utcs/manifest.yaml
+  
+  program_identity:
+    required: true
+    schema: AMPEL360/schemas/program.identity.schema.json
+    instances:
+      - BWB-Q100/program.identity.json
+  
+  lineage:
+    required: true
+    path: AMPEL360/lineage/registry.yaml
+
+compliance:
+  ampel360_commons:
+    # Only allow specific subdirectories under AMPEL360/
+    allowed_dirs:
+      - ontology
+      - deontology
+      - source_data
+      - schemas
+      - contracts
+      - lineage
+      - README.md
+    
+    # Forbidden patterns (app code indicators)
+    forbidden_dirs:
+      - src
+      - app
+      - services
+      - cmd
+      - bin
+  
+  pax_orientation:
+    # Only OB/OFF allowed, no ONB/OUT
+    allowed:
+      - OB
+      - OFF
+    forbidden:
+      - ONB
+      - OUT
+
+canon:
+  thread_flow: "QS→FWD→UE→FE→CB→QB"
+  utcs: "UiX Threading Context/Content/Cache & Structure/Style/Sheet"
+  qox: "Quantum Optimizations"
+  pax: "OB/OFF only"

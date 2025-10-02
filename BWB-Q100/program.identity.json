@@ -1,0 +1,22 @@
+{
+  "product_id": "BWB-Q100",
+  "name": "AMPEL360 BWB-Q100 (H2)",
+  "emancipated_from": "AMPEL360",
+  "ontological_functions": [
+    "airframe.wing.primary_structure",
+    "fuel.h2.lh2.turnaround",
+    "avionics.ima.partitioning"
+  ],
+  "deontological_bindings": [
+    {
+      "source_data_ref": "AMPEL360/source_data/h2_materials_v1.csv",
+      "duties": [
+        "retain-hash-and-provenance",
+        "do-not-redist-nonreleasable",
+        "update-utcs-on-change"
+      ]
+    }
+  ],
+  "utcs_refs": ["utcs/manifest.yaml"],
+  "notes": "Identity derived from AMPEL360 commons; see lineage/registry.yaml"
+}

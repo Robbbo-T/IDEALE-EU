@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Program Identity",
+  "type": "object",
+  "required": ["product_id", "name", "emancipated_from", "ontological_functions", "deontological_bindings", "utcs_refs"],
+  "properties": {
+    "product_id": { "type": "string", "pattern": "^[A-Z0-9._-]+$" },
+    "name": { "type": "string" },
+    "emancipated_from": { "type": "string", "const": "AMPEL360" },
+    "ontological_functions": { "type": "array", "items": { "type": "string" } },
+    "deontological_bindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source_data_ref", "duties"],
+        "properties": {
+          "source_data_ref": { "type": "string" },
+          "duties": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "utcs_refs": { "type": "array", "items": { "type": "string" } },
+    "notes": { "type": "string" }
+  }
+}
