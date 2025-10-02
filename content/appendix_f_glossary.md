@@ -46,7 +46,7 @@
 - **ARP4754A / ARP4761**: systems development / safety assessment. *(Desarrollo de sistemas / evaluación de seguridad).*
 - **AS9100**: aerospace QMS. *(Calidad aeroespacial).*
 - **DO-178C / DO-254**: airborne software / electronic hardware assurance. *(Normativas de software/hardware aeronáuticos).*
-- **ECSS**: European Cooperation for Space Standardization. *(Estándres espaciales europeos).*
+- **ECSS**: European Cooperation for Space Standardization. *(Estándares espaciales europeos).*
 - **EU 2021/821**: EU dual-use export control. *(Control de exportación de doble uso).*
 - **ITAR / EAR**: US export controls. *(Controles de exportación EEUU).*
 
