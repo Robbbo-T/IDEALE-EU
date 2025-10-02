@@ -22,6 +22,7 @@ html:
 
 sbom:
 	@mkdir -p ../evidence
+	@command -v syft >/dev/null 2>&1 || { echo >&2 "Error: syft is not installed. Please install syft to generate the SBOM."; exit 1; }
 	@syft dir:.. -o spdx-json > ../evidence/sbom.spdx.json
 
 hash:
