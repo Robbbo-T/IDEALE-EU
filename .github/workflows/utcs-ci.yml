@@ -1,4 +1,4 @@
-name: UTCS Build & Evidence
+name: UTCS Build & CSDB Federation
 
 on:
   push:
@@ -22,15 +22,20 @@ jobs:
       - name: Install TeX Live (for pdflatex)
         run: sudo apt-get update && sudo apt-get install -y texlive-latex-base
 
-      # Add any other dependency installation steps here
+      # Optional: Install other dependencies here (e.g. pandoc, make, etc.)
 
-      - name: Install dependencies
+      # Check if requirements.txt exists before attempting install
+      - name: Install Python dependencies (if requirements.txt exists)
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          if [ -f requirements.txt ]; then
+            python -m pip install --upgrade pip
+            pip install -r requirements.txt
+          else
+            echo "No requirements.txt found, skipping pip install."
+          fi
 
       - name: Build PDF
         working-directory: ./sheet
         run: make pdf
 
-      # Add test or deploy steps as needed
+      # Add test or deployment steps as needed
