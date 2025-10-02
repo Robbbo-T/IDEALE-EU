@@ -1,8 +1,8 @@
-# CQH - Cryogenics, Quantum & H₂
+# CQH - Cryogenics, Quantum & H$_2$
 
 ## Overview
 
-This domain covers Cryogenics, Quantum & H₂ within the ASI-T2 ecosystem.
+This domain covers Cryogenics, Quantum & H$_2$ within the ASI-T2 ecosystem.
 
 ## Structure
 

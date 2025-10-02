@@ -1,14 +1,14 @@
-# H₂/LH₂ Airport
+# H$_2$/LH$_2$ Airport
 
 **Hydrogen and Liquid Hydrogen Airport Infrastructure**
 
 ## Overview
 
-H₂/LH₂ Airport focuses on the infrastructure, operations, and safety systems required for hydrogen-powered aviation, including refueling, turnaround operations, and facility design.
+H$_2$/LH$_2$ Airport focuses on the infrastructure, operations, and safety systems required for hydrogen-powered aviation, including refueling, turnaround operations, and facility design.
 
 ## Purpose
 
-- **Refueling Operations**: H₂/LH₂ aircraft refueling procedures
+- **Refueling Operations**: H$_2$/LH$_2$ aircraft refueling procedures
 - **Turnaround Operations**: Ground handling and quick turnaround
 - **Capacity Planning**: Flow models and facility sizing
 - **Safety Systems**: ALARP (As Low As Reasonably Practicable) risk management
@@ -45,15 +45,15 @@ H₂/LH₂ Airport focuses on the infrastructure, operations, and safety systems
 
 ### Domains
 - **AAP** - Airport Adaptable Platforms
-- **CQH** - Cryogenics, Quantum & H₂
+- **CQH** - Cryogenics, Quantum & H$_2$
 - **IIF** - Industrial Infrastructure & Facilities
 - **EER** - Environmental, Emissions & Remediation
 
 ## Key Systems
 
 ### Refueling Infrastructure
-- **LH₂ Storage**: Cryogenic tanks and safety systems
-- **GH₂ Storage**: Compressed hydrogen systems
+- **LH$_2$ Storage**: Cryogenic tanks and safety systems
+- **GH$_2$ Storage**: Compressed hydrogen systems
 - **Transfer Systems**: Pumps, valves, and piping
 - **Safety Zones**: Hazard separation distances
 
@@ -65,7 +65,7 @@ H₂/LH₂ Airport focuses on the infrastructure, operations, and safety systems
 
 ### Safety Systems
 - **Leak Detection**: Continuous monitoring
-- **Fire Suppression**: Specialized H₂ fire systems
+- **Fire Suppression**: Specialized H$_2$ fire systems
 - **Ventilation**: Hydrogen dispersion prevention
 - **Emergency Response**: Incident management procedures
 
@@ -109,7 +109,7 @@ H₂/LH₂ Airport focuses on the infrastructure, operations, and safety systems
 - **Turnaround Time**: Target <30 minutes
 - **Vehicles per Hour**: Facility throughput
 - **Storage Capacity**: Days of operation
-- **Boil-off Management**: LH₂ losses <2%
+- **Boil-off Management**: LH$_2$ losses <2%
 
 ## Standards
 
@@ -128,7 +128,7 @@ H₂/LH₂ Airport focuses on the infrastructure, operations, and safety systems
 ## Environmental Impact
 
 - **Zero Emissions**: At point of use (aircraft operation)
-- **Renewable H₂**: Green hydrogen sourcing
+- **Renewable H$_2$**: Green hydrogen sourcing
 - **Water Byproduct**: Clean water recovery
 - **Noise**: Reduced compared to jet fuel
 

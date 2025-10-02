@@ -110,7 +110,7 @@ domains/
 ├── AAA/ - Airframes, Aerodynamics & Airworthiness
 ├── AAP/ - Airport Adaptable Platforms
 ├── CCC/ - Cockpit, Cabin & Cargo
-├── CQH/ - Cryogenics, Quantum & H₂
+├── CQH/ - Cryogenics, Quantum & H$_2$
 ├── DDD/ - Drainage, Dehumidification & Drying
 ├── EDI/ - Electronics & Digital Instruments
 ├── EEE/ - Electrical, Endotransponders & Circulation
@@ -209,7 +209,7 @@ Documented throughout:
 Every product documented with IDEALE-EU alignment:
 - **Intelligence**: Data-driven systems
 - **Defense**: Non-offensive, protective capabilities
-- **Energy**: Sustainable, H₂/LH₂ systems
+- **Energy**: Sustainable, H$_2$/LH$_2$ systems
 - **Aerospace**: EU sovereign capabilities
 - **Logistics**: Efficient operations
 - **ESG**: Environmental, Social, Governance standards
