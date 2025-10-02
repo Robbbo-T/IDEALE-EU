@@ -22,9 +22,10 @@ jobs:
       - name: Install TeX Live (for pdflatex)
         run: sudo apt-get update && sudo apt-get install -y texlive-latex-base
 
-      # Optional: Install other dependencies here (e.g. pandoc, make, etc.)
+      - name: Install pandoc
+        run: sudo apt-get update && sudo apt-get install -y pandoc
 
-      # Check if requirements.txt exists before attempting install
+      # Optional: Install dependencies if requirements.txt exists
       - name: Install Python dependencies (if requirements.txt exists)
         run: |
           if [ -f requirements.txt ]; then
@@ -37,5 +38,3 @@ jobs:
       - name: Build PDF
         working-directory: ./sheet
         run: make pdf
-
-      # Add test or deployment steps as needed
