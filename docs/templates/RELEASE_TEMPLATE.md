@@ -32,7 +32,7 @@ Brief description of this release and its objectives.
 - [ ] Feature/Update 1
 - [ ] Feature/Update 2
 
-### H₂/LH₂ Airport
+### H$_2$/LH$_2$ Airport
 - [ ] Feature/Update 1
 - [ ] Feature/Update 2
 
@@ -146,7 +146,7 @@ List any breaking changes and migration guidance:
 - **Uptime**: XX.XX%
 - **MTTR**: X.XX hours
 
-### H₂/LH₂ Airport
+### H$_2$/LH$_2$ Airport
 - **Turnaround Time**: XX minutes
 - **Boil-off Losses**: X.X%
 - **Capacity**: XX vehicles/hour
@@ -172,7 +172,7 @@ List any breaking changes and migration guidance:
 
 ### Climate/Energy
 - Per-mission energy reduction: XX.X%
-- H₂/LH₂ integration: status
+- H$_2$/LH$_2$ integration: status
 - Carbon payback: XX months/years
 
 ### Safety

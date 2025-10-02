@@ -120,7 +120,7 @@ See [Master Whitepaper](README.md)
 | [EU Defense Wall](EU_DEFENSE_WALL_SWARM/) | H0 Design | Ground defense |
 | [360PLUS](AMPEL_360PLUS/) | H0 Demo | Space tourism |
 | [Digital Platform](DIGITAL_PLATFORM/) | H0 Design | Infrastructure |
-| [H₂ Airport](H2_AIRPORT/) | H0 Model | Hydrogen operations |
+| [H$_2$ Airport](H2_AIRPORT/) | H0 Model | Hydrogen operations |
 | [Sustainable Finance](SUSTAINABLE_FINANCE/) | H0 Design | Financial system |
 
 ## Roadmap
