@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import argparse, json, os, sys, yaml
+import argparse, json, subprocess, sys, yaml
 from pathlib import Path
 
 def load_specs(path):
@@ -74,9 +74,20 @@ def main():
     Path(args.out_dot).write_text(dot, encoding="utf-8")
 
     if args.render:
-        rc = os.system(f"dot -Tpdf {args.out_dot} -o {args.out_pdf}")
-        if rc != 0:
+        try:
+            subprocess.run(
+                ["dot", "-Tpdf", args.out_dot, "-o", args.out_pdf],
+                check=True,
+                capture_output=True,
+                text=True
+            )
+        except subprocess.CalledProcessError as e:
             print("Graphviz 'dot' failed. Install graphviz or run without --render.", file=sys.stderr)
+            if e.stderr:
+                print(f"Error: {e.stderr}", file=sys.stderr)
+            sys.exit(1)
+        except FileNotFoundError:
+            print("Graphviz 'dot' command not found. Install graphviz or run without --render.", file=sys.stderr)
             sys.exit(1)
 
 if __name__ == "__main__":
