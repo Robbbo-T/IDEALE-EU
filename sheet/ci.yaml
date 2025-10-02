@@ -1,0 +1,10 @@
+# CI configuration for UTCS bundle
+# See .github/workflows/utcs-ci.yml for actual workflow implementation
+build:
+  order: chapters.txt
+  outputs:
+    - cache/techpubs_overview.pdf
+    - cache/techpubs_overview.html
+evidence:
+  sbom: evidence/sbom.spdx.json
+  checksums: evidence/checksums.sha256
