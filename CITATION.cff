@@ -1,0 +1,41 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+type: software
+title: "ASI-T2 Ecosystem: Aeronautics, Space, Swarm & Sustainable Finance under TFA V2"
+version: 0.1.0
+date-released: "2025-10-01"
+authors:
+  - family-names: Pelliccia
+    given-names: Amedeo
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+abstract: |
+  ASI-T2 is a system-of-systems (SoS) spanning aircraft, space, multi-agent swarms, 
+  digital infrastructure, hydrogen-airport operations, and sustainable finance. 
+  From inception, it is engineered to be verifiable, reproducible, and ethically governed, 
+  and aligned with IDEALE-EU as a cross-cutting strategy for EU-centric ESG outcomes 
+  and sovereign capabilities.
+keywords:
+  - aerospace
+  - blended-wing-body
+  - space-systems
+  - multi-agent-swarms
+  - sustainable-finance
+  - TFA-V2
+  - MAL
+  - UTCS
+  - IDEALE-EU
+  - hydrogen-airport
+license: "TBA"
+repository-code: "https://github.com/Robbbo-T/IDEALE-EU"
+identifiers:
+  - type: doi
+    value: "TBA"
+    description: "DOI for Master Whitepaper #1"
+references:
+  - type: whitepaper
+    title: "ASI-T2 Ecosystem: Master Whitepaper #1"
+    authors:
+      - family-names: Pelliccia
+        given-names: Amedeo
+    year: 2025
+    version: 0.1.0

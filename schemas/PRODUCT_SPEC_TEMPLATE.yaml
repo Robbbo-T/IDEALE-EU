@@ -1,0 +1,88 @@
+---
+# Product Specification Template
+# Canonical template for ASI-T2 product definitions
+# Follows TFA V2 Architecture and MAL-EEM governance
+
+metadata:
+  product_id: ""           # Unique identifier (e.g., AMPEL360-BWB-Q100)
+  product_name: ""         # Human-readable name
+  version: "0.0.0"         # Semantic versioning (major.minor.patch)
+  artifact_type: ""        # e.g., aircraft, satellite, swarm, platform, finance
+  classification: ""       # PUBLIC-DRAFT, CONFIDENTIAL, CONTROLLED
+  llc: ""                  # Lifecycle category (e.g., GENESIS, ALPHA, BETA, PRODUCTION)
+  release_date: ""         # ISO 8601 format (YYYY-MM-DD)
+  author: ""
+  maintainer: ""
+  framework: "TFA-V2"
+  ethics_guard: "MAL-EEM"
+  utcs_mi: "v5.0"
+
+purpose:
+  description: ""          # Brief description of product purpose
+  objectives: []           # List of key objectives
+  scope: ""                # Scope within ASI-T2 ecosystem
+
+architecture:
+  domains: []              # List of domain codes (AAA, AAP, CCC, etc.)
+  layers: []               # TFA layers used (QS, FWD, UE, FE, CB, QB)
+  packs: []                # Packs used (CAx, QOx, PAx)
+  
+interfaces:
+  mal_control: ""          # MAL control interface version (e.g., MAL.v1.control)
+  mal_telemetry: ""        # MAL telemetry interface version (e.g., MAL.v1.telemetry)
+  schemas: []              # List of schema files
+  apis: []                 # List of API endpoints/contracts
+
+state:
+  current_horizon: ""      # H0, H1, H2
+  maturity: ""             # SIL, HIL, PRODUCTION
+  next_milestone: ""       # Description of next milestone
+  
+evidence:
+  sbom_path: ""            # Path to SBOM file
+  doi: ""                  # Digital Object Identifier
+  signed_tag: ""           # Git signed tag (e.g., v0.1.0)
+  utcs_bundle: ""          # Path to UTCS bundle manifest
+  videos_logs: []          # List of demo videos/logs with hashes
+  attestations: []         # List of attestation files (SLSA, in-toto)
+
+kpis:
+  # Key Performance Indicators (product-specific)
+  metrics: []              # List of tracked metrics
+  targets: {}              # Metric name -> target value mapping
+
+standards:
+  aerospace: []            # e.g., ARP4754A, ARP4761, DO-178C, DO-254
+  space: []                # e.g., ECSS standards
+  quality: []              # e.g., AS9100
+  export: []               # e.g., EU 2021/821, ITAR, EAR
+
+compliance:
+  safety_level: ""         # e.g., DO-178C Level C/D
+  alarp_assessment: ""     # Path to ALARP assessment
+  mal_eem_policy: ""       # Path to MAL-EEM policy document
+  
+dependencies:
+  internal: []             # List of internal dependencies (other ASI-T2 products)
+  external: []             # List of external dependencies (libraries, tools)
+
+risks:
+  identified: []           # List of identified risks
+  mitigations: []          # List of mitigation strategies
+
+roadmap:
+  h0_deliverables: []      # H0 (0-90 days) deliverables
+  h1_deliverables: []      # H1 (3-9 months) deliverables
+  h2_deliverables: []      # H2 (9-24 months) deliverables
+
+gates:
+  fcr1_criteria: []        # FCR-1 gate criteria
+  fcr2_criteria: []        # FCR-2 gate criteria
+
+ideale_eu:
+  strategy_alignment: ""   # How product aligns with IDEALE-EU strategy
+  esg_tags: []             # ESG-EU tags
+  eu_node_relevance: ""    # Relevance to EU nodes
+  resilience_uplift: ""    # Description of resilience improvements
+
+notes: ""                  # Additional notes
