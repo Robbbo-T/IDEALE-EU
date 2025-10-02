@@ -30,6 +30,10 @@ jobs:
       # - name: Install Python dependencies
       #   run: pip install -r requirements.txt
 
+      - name: Install syft
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
+
       - name: Build PDF
         run: make -C sheet pdf
 
