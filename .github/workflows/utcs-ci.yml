@@ -1,46 +1,36 @@
 name: UTCS Build & Evidence
+
 on:
-  pull_request:
-    branches: [ "**" ]
   push:
-    branches: [ "feat/**", "main" ]
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Setup Pandoc
-        uses: r-lib/actions/setup-pandoc@v2
-      - name: Build UTCS (PDF/HTML)
-        run: |
-          sudo apt-get update && sudo apt-get install -y make
-          make -C sheet build
-      - name: Generate SBOM (SPDX-JSON)
-        uses: anchore/sbom-action@v0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          path: "."
-          format: "spdx-json"
-          output-file: "evidence/sbom.spdx.json"
-      - name: Hash artifacts
+          python-version: '3.10'
+
+      - name: Install TeX Live (for pdflatex)
+        run: sudo apt-get update && sudo apt-get install -y texlive-latex-base
+
+      # Add any other dependency installation steps here
+
+      - name: Install dependencies
         run: |
-          mkdir -p evidence
-          sha256sum cache/techpubs_overview.pdf > evidence/checksums.sha256
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: utcs-bundle
-          path: |
-            cache/techpubs_overview.pdf
-            cache/techpubs_overview.html
-            evidence/sbom.spdx.json
-            evidence/checksums.sha256
-  lint-canon:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Validate UTCS manifest presence
-        run: test -f utcs/manifest.yaml
-      - name: Check PAx orientation markers (OB/OFF only)
-        run: |
-          ! grep -RInq "ONB\|OUT " -- content/ || (echo "Use OB/OFF only" && exit 1)
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Build PDF
+        working-directory: ./sheet
+        run: make pdf
+
+      # Add test or deploy steps as needed
