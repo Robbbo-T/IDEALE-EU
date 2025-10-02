@@ -1,5 +1,5 @@
 ## Title
-Appendix F — Glossary & Acronyms integrated into UTCS bundle (BWB-Q100 TechPubs ACRF)
+[Replace with a concise, descriptive title for your PR]
 
 ## Summary
 - Adds `content/appendix_f_glossary.md` (canon: QS→FWD→UE→FE→CB→QB; UTCS; QOx; OB/OFF)
