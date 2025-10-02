@@ -13,7 +13,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Validate UTCS manifest presence
         run: test -f utcs/manifest.yaml
-      # ... (other linting steps from your branch)
+      - name: Lint AMPEL360 Commons Enforcement
+        run: make lint
 
   validate-schemas:
     runs-on: ubuntu-latest
