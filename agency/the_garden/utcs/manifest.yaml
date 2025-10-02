@@ -1,0 +1,20 @@
+utcs-version: 1.0
+artifact: "AGENCY-THE_GARDEN"
+bridge: "QS→FWD→UE→FE→CB→QB"
+bundles:
+  context:
+    - ../README.md
+    - ../curation/policy.md
+  content:
+    - ../curation/catalog.yaml
+    - ../curation/catalog.schema.json
+  cache: []
+  structure: []
+  style: []
+  sheet: []
+hashes:
+  algo: sha256
+  files: []
+signatures:
+  git-tag: ""
+  additional: []

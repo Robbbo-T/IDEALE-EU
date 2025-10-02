@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "the_garden Catalog",
+  "type": "object",
+  "required": ["version", "collections"],
+  "properties": {
+    "version": { "type": "string" },
+    "collections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "items"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9_.-]+$" },
+          "title": { "type": "string" },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["name", "path", "hash"],
+              "properties": {
+                "name": { "type": "string" },
+                "path": { "type": "string" },
+                "hash": { "type": "string" },
+                "doi": { "type": "string" },
+                "tags": { "type": "array", "items": { "type": "string" } }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+# AMPEL360-CSDB DMC Register
+# Placeholder for S1000D Data Module Code registration
+# This file will contain DMC registry entries for AMPEL360 CSDB federation
+
+dmc_entries: []

@@ -1,0 +1,30 @@
+utcs-version: 1.0
+artifact: "ASI-T2-ROOT"
+bridge: "QS→FWD→UE→FE→CB→QB"
+bundles:
+  context:
+    - README.md
+    - OVERVIEW.md
+    - IMPLEMENTATION_SUMMARY.md
+    - agency/the_garden/README.md
+    - agency/the_garden/curation/policy.md
+  content:
+    - CITATION.cff
+    - CODE_OF_CONDUCT.md
+    - CONTRIBUTING.md
+    - LICENSE.md
+    - agency/the_garden/curation/catalog.yaml
+    - agency/the_garden/curation/catalog.schema.json
+  cache:
+    - cache/carpet_trees.pdf
+  structure:
+    - print/specs/carpet_trees.yaml
+  style: []
+  sheet:
+    - print/scripts/generate_carpet_trees.py
+hashes:
+  algo: sha256
+  files: []
+signatures:
+  git-tag: ""
+  additional: []

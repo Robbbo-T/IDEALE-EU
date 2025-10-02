@@ -1,0 +1,17 @@
+version: "0.1.0"
+collections:
+  - id: bwbq100_baseline
+    title: "BWB-Q100 · Technical Publications — Baseline"
+    items:
+      - name: "ATA-57-10 Wing Primary Structure (overview)"
+        path: "BWB-Q100/domains/AAA/ata/ATA-57/57-10_Wing_Primary_Structure/README.md"
+        hash: "TBD_SHA256"
+        doi: "TBA"
+        tags: ["ATA-57","S1000D","TechPubs"]
+  - id: platforms_csdb
+    title: "Digital Platforms — CSDB Federation"
+    items:
+      - name: "AMPEL360-CSDB DMC Register"
+        path: "platforms/AMPEL360-CSDB/csdb/register/dmc_register.yml"
+        hash: "TBD_SHA256"
+        tags: ["CSDB","S1000D","UTCS"]
