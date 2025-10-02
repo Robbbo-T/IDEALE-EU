@@ -12,7 +12,7 @@
 ## 2) Packs & Orientation
 - **CAx — Computer-Aided X**: CAD/CAE/CAM/CAT/CFD umbrella. *(Herramientas asistidas por computador).*
 - **QOx — Quantum Optimizations**: MILP → quantum-inspired/annealing for routing/scheduling/packing. *(Optimizaciones cuánticas o inspiradas).*
-- **PAx — Packaging & Assemblies**: placement/assembly conventions; **orientation markers only**: **OB = Onboard**, **OFF = Outboard**. *(Empaquetado y ensamblajes; marcadores OB/OFF).*
+- **PAx — Packaging & Assemblies**: placement/assembly conventions; **orientation markers only**: **ONB = Onboard**, **OUT = Outboard**. *(Empaquetado y ensamblajes; marcadores ONB/OUT).*
 
 ## 3) Platform, Evidence & Governance
 - **MAL — Master Application Layer/Logic**: domain PLC for IO, messaging, telemetry, health, logging, keys/policy. *(Capa maestra de aplicación/lógica).*
@@ -59,7 +59,7 @@
 - **MTBF / MTTR / MTTD**: Mean Time Between Failures / To Repair / To Detect. *(Tiempos medios).*
 
 ## 8) Energy & Propulsion
-- **H₂ / LH₂**: Hydrogen / Liquid Hydrogen. *(Hidrógeno / hidrógeno líquido).*
+- **H$_2$ / LH$_2$**: Hydrogen / Liquid Hydrogen. *(Hidrógeno / hidrógeno líquido).*
 - **ATA-7X**: propulsion systems family (70–79). *(Familia de propulsión).*
 
 ## 9) Strategy & Scope

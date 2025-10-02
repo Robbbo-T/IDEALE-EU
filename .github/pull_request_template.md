@@ -2,7 +2,7 @@
 [Replace with a concise, descriptive title for your PR]
 
 ## Summary
-- Adds `content/appendix_f_glossary.md` (canon: QS→FWD→UE→FE→CB→QB; UTCS; QOx; OB/OFF)
+- Adds `content/appendix_f_glossary.md` (canon: QS→FWD→UE→FE→CB→QB; UTCS; QOx; ONB/OUT)
 - Updates `utcs/manifest.yaml` to include glossary
 - Adds `sheet/chapters.txt` to enforce build order (glossary last)
 - Upgrades `sheet/Makefile` to read ordered chapters
@@ -15,7 +15,7 @@
 - [ ] Tag prepared: `ac-rf-v0.1`
 
 ## Canon & Policy
-- [x] **PAx orientation:** OB/OFF only
+- [x] **PAx orientation:** ONB/OUT only
 - [x] **QOx:** Quantum Optimizations
 - [x] **UTCS:** UiX Threading Context/Content/Cache & Structure/Style/Sheet
 - [x] **Bridge:** QS→FWD→UE→FE→CB→QB
@@ -29,4 +29,4 @@
 ## Checklist
 - [ ] Paths follow TFA grammar and ATA/S1000D structure
 - [ ] No proprietary data; synthetic examples only
-- [ ] No "ONB/OUT"; only OB/OFF appears
+- [ ] No "OB/OFF"; only ONB/OUT appears
