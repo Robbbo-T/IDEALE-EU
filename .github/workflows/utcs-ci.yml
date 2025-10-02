@@ -26,8 +26,31 @@ jobs:
           python-version: '3.10'
       - name: Install jsonschema
         run: pip install jsonschema pyyaml
-      # ... (schema validation python script)
-
+      - name: Validate manifest schema
+        run: |
+          python -c "
+          import yaml
+          import jsonschema
+          import sys
+          # Load manifest
+          with open('utcs/manifest.yaml') as f:
+              manifest = yaml.safe_load(f)
+          # Define schema (example, adjust as needed)
+          schema = {
+              'type': 'object',
+              'properties': {
+                  'title': {'type': 'string'},
+                  'version': {'type': 'string'},
+                  'authors': {'type': 'array', 'items': {'type': 'string'}}
+              },
+              'required': ['title', 'version', 'authors']
+          }
+          try:
+              jsonschema.validate(instance=manifest, schema=schema)
+          except jsonschema.ValidationError as e:
+              print('Schema validation failed:', e)
+              sys.exit(1)
+          "
   build-utcs:
     runs-on: ubuntu-latest
     needs: [lint-canon, validate-schemas]
