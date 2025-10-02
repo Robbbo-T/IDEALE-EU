@@ -405,4 +405,4 @@ Compatibility: **minor** = backward-compatible; **major** = with migrators.
 - **AAA/**, **AAP/**, **CCC/**, **CQH/**, **DDD/**, **EDI/**, **EEE/**, **EER/**, **IIF/**, **IIS/**, **LCC/**, **LIB/**, **MEC/**, **OOO/**, **PPP/**
 ```
 
-Want me to also generate a **`CITATION.cff`** and a **`RELEASE.md`** skeleton consistent with **IDEALE-EU** and the updated **UTCS** phrasing?
+
