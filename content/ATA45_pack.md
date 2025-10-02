@@ -1,1 +1,5 @@
-# ATA45 Pack\n\nPlaceholder for ATA45 content pack.
+# ATA45_pack - Placeholder
+
+This pack is under development for BWB-Q100 TechPubs ACRF.
+
+See `utcs/manifest.yaml` for bundle structure.

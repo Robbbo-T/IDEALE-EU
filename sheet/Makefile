@@ -1,31 +1,36 @@
-# UTCS Build Makefile
-# UiX Threading Context/Content/Cache & Structure/Style/Sheet
+# sheet/Makefile
+.PHONY: build pdf html sbom hash tag order
 
-.PHONY: all clean validate bundle
+CHAPTERS_FILE := chapters.txt
+ifneq ("$(wildcard $(CHAPTERS_FILE))","")
+  BUILD_MD := $(shell cat $(CHAPTERS_FILE) | sed 's|content/|../content/|g' | tr '\n' ' ')
+else
+  BUILD_MD := ../content/*.md
+endif
 
-all: validate bundle
+build: pdf html
 
-validate:
-	@echo "Validating UTCS manifest..."
-	@test -f ../utcs/manifest.yaml || (echo "Error: utcs/manifest.yaml not found" && exit 1)
-	@echo "Validating program identity..."
-	@test -f ../BWB-Q100/program.identity.json || (echo "Error: BWB-Q100/program.identity.json not found" && exit 1)
-	@echo "Validating lineage registry..."
-	@test -f ../AMPEL360/lineage/registry.yaml || (echo "Error: AMPEL360/lineage/registry.yaml not found" && exit 1)
-	@echo "✓ All validations passed"
+pdf:
+	@mkdir -p ../cache
+	@echo "Building PDF from: $(BUILD_MD)"
+	@pandoc $(BUILD_MD) -o ../cache/techpubs_overview.pdf
 
-bundle:
-	@echo "Creating UTCS bundle..."
-	@mkdir -p ../evidence/utcs_bundles
-	@cd .. && tar czf evidence/utcs_bundles/utcs-latest.tar.gz \
-		utcs/ \
-		AMPEL360/lineage/ \
-		AMPEL360/schemas/ \
-		BWB-Q100/program.identity.json \
-		content/appendix_g_ampel360_commons.md
-	@echo "✓ UTCS bundle created: evidence/utcs_bundles/utcs-latest.tar.gz"
+html:
+	@mkdir -p ../cache
+	@echo "Building HTML from: $(BUILD_MD)"
+	@pandoc $(BUILD_MD) -o ../cache/techpubs_overview.html
 
-clean:
-	@echo "Cleaning UTCS artifacts..."
-	@rm -f ../evidence/utcs_bundles/utcs-latest.tar.gz
-	@echo "✓ Cleaned"
+sbom:
+	@mkdir -p ../evidence
+	@command -v syft >/dev/null 2>&1 || { echo >&2 "Error: syft is not installed. Please install syft to generate the SBOM."; exit 1; }
+	@syft dir:.. -o spdx-json > ../evidence/sbom.spdx.json
+
+hash:
+	@mkdir -p ../evidence
+	@sha256sum ../cache/techpubs_overview.pdf ../cache/techpubs_overview.html > ../evidence/checksums.sha256
+
+tag:
+	@git tag -s ac-rf-v0.1 -m "BWBQ100 TechPubs Advanced Copies (Research Foresights)"
+
+order:
+	@echo "Build order:" && echo "$(BUILD_MD)" | tr ' ' '\n'

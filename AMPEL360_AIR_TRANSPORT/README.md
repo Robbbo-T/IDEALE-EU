@@ -24,7 +24,7 @@ AMPEL360 AIR TRANSPORT focuses on the operational integration of the AMPEL360 BW
 - Gate compatibility and turnaround procedures
 - Ground support equipment requirements
 - Passenger boarding and cargo handling
-- Integration with H₂/LH₂ refueling infrastructure
+- Integration with H$_2$/LH$_2$ refueling infrastructure
 
 ### Regulatory Compliance
 - EASA CS-25 (Large Aeroplanes) certification pathway
@@ -62,7 +62,7 @@ Follows **TFA V2 Architecture** with focus on:
 ## IDEALE-EU Alignment
 
 - **Logistics**: Efficient air transport network integration
-- **Energy**: H₂/LH₂ infrastructure compatibility
+- **Energy**: H$_2$/LH$_2$ infrastructure compatibility
 - **ESG**: Reduced environmental impact of air transport
 
 ## Links

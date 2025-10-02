@@ -1,1 +1,5 @@
-# ATA42 Pack\n\nPlaceholder for ATA42 content pack.
+# ATA42_pack - Placeholder
+
+This pack is under development for BWB-Q100 TechPubs ACRF.
+
+See `utcs/manifest.yaml` for bundle structure.

@@ -1,1 +1,5 @@
-# ATA28 Pack\n\nPlaceholder for ATA28 content pack.
+# ATA28_pack - Placeholder
+
+This pack is under development for BWB-Q100 TechPubs ACRF.
+
+See `utcs/manifest.yaml` for bundle structure.

@@ -34,6 +34,11 @@ evidence/*.zip
 evidence/*.tar.gz
 evidence/temp/
 
+# UTCS build artifacts
+cache/
+evidence/sbom.spdx.json
+evidence/checksums.sha256
+
 # Compiled Python files
 __pycache__/
 *.py[cod]

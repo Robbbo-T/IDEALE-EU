@@ -59,7 +59,7 @@ The backbone is **MAL (Master Application Layer/Logic)**—the domain PLC that s
 3) **GAIA AIR · IDRO-HYDROROBOT · EU Defense Wall Swarm** — multi-agent swarms (air/ground/aqueous) for cooperative, resilient missions.  
 4) **Digital Platform** — deterministic buses, observability, append-only storage with **UTCS threading/bundling** under **MAL-EEM** policy.  
 5) **AMPEL 360PLUS** — space-tourism functional demonstrators.  
-6) **H₂/LH₂ Airport** — logistics models, layouts, ALARP analysis, basic ops.  
+6) **H$_2$/LH$_2$ Airport** — logistics models, layouts, ALARP analysis, basic ops.  
 7) **Sustainable Finance** — anti-speculative design with demurrage/lock-ups, reserves, non-transferable operational credits, and quadratic funding.
 
 ---
@@ -73,7 +73,7 @@ The backbone is **MAL (Master Application Layer/Logic)**—the domain PLC that s
 - **AAA/** — Airframes, Aerodynamics & Airworthiness (safety & compliance)  
 - **AAP/** — Airport Adaptable Platforms  
 - **CCC/** — Cockpit, Cabin & Cargo  
-- **CQH/** — Cryogenics, Quantum & H₂  
+- **CQH/** — Cryogenics, Quantum & H$_2$  
 - **DDD/** — Drainage, Dehumidification & Drying  
 - **EDI/** — Electronics & Digital Instruments  
 - **EEE/** — Electrical, Endotransponders & Circulation  
@@ -99,7 +99,7 @@ The backbone is **MAL (Master Application Layer/Logic)**—the domain PLC that s
 - **CB (Classical Bit / Companion Binary).** Deterministic, verifiable classical artifacts and binaries.  
 - **QB (Bit Cubic; non-quantumised).** Discrete 3D lifting of classical state (`CB × CB × CB`), **not** a qubit; the **qubit-logic approximation** when discretization is required.
 
-> **Important distinction (non-normative).** A **qubit** lives in a **tetrahedral continuum+** and includes **transposition time**, **projection time**, and **teleportation-relative delay/phase** (relative to a theoretical baseline **TP₀**). Those parameters flow through **FWD**, collapse at **UE**, and are contracted in **FE** via SLOs. Qubits are **not** used in the TFA flow; **QB** is non-quantum.
+> **Important distinction (non-normative).** A **qubit** lives in a **tetrahedral continuum+** and includes **transposition time**, **projection time**, and **teleportation-relative delay/phase** (relative to a theoretical baseline **TP$_0$**). Those parameters flow through **FWD**, collapse at **UE**, and are contracted in **FE** via SLOs. Qubits are **not** used in the TFA flow; **QB** is non-quantum.
 
 ### 3.2 Bridge Grammar (ATA/S1000D + CAx/QOx/PAx)
 
@@ -165,7 +165,7 @@ Deterministic pub/sub with QoS; versioned data products; mission timelines and a
 ### 4.5 AMPEL 360PLUS (Space Tourism)
 Cabin/safety-tourism demonstrators; reusable integration with AMPEL360.
 
-### 4.6 H₂/LH₂ Airport
+### 4.6 H$_2$/LH$_2$ Airport
 Refuelling/turnaround operations; capacity/flow model; preliminary layouts; ALARP risks.
 
 ### 4.7 Sustainable, Anti-Speculative Finance
@@ -203,10 +203,10 @@ Automated **SIL → HIL** campaigns; safety-lite adoption of ARP4754A (systems) 
 
 ## 8. Roadmap & Gates
 
-**H0 (0–90 days)**: MAL v1; AMPEL360 SIL; GAIA sim + ingestion; swarm 10–20; 360PLUS demo; H₂/LH₂ model; finance whitepaper.  
+**H0 (0–90 days)**: MAL v1; AMPEL360 SIL; GAIA sim + ingestion; swarm 10–20; 360PLUS demo; H$_2$/LH$_2$ model; finance whitepaper.  
 **Gate FCR-1**: SBOM + videos/logs + DOI + signed tag + **UTCS** bundle.
 
-**H1 (3–9 months)**: AMPEL360 HIL; SDR/ground for GAIA; swarm 50–100; observability; H₂ layouts; finance testnet.  
+**H1 (3–9 months)**: AMPEL360 HIL; SDR/ground for GAIA; swarm 50–100; observability; H$_2$ layouts; finance testnet.  
 **Gate FCR-2**: reproducibility, coverage, attestations, **two external validations**.
 
 **H2 (9–24 months)**: cross-integrations, third-party audits, public demos.
@@ -234,7 +234,7 @@ Automated **SIL → HIL** campaigns; safety-lite adoption of ARP4754A (systems) 
 
 ## 11. Impact & Metrics
 
-**Climate/Energy:** per-mission energy; BWB efficiency; H₂/LH₂ ratios; carbon payback.  
+**Climate/Energy:** per-mission energy; BWB efficiency; H$_2$/LH$_2$ ratios; carbon payback.  
 **Safety:** avoided incidents; mean time to detect; mission integrity.  
 **Socio-economic:** cost-per-service; accessibility; % funds to public-interest R&D.  
 **IDEALE-EU disclosure:** EU-node relevance, resilience uplift, ESG-EU tags.
@@ -270,7 +270,7 @@ Compatibility: **minor** = backward-compatible; **major** = with migrators.
 - **GAIA:** downlink latency; packet integrity; mission success rate.  
 - **Swarm:** mean pairwise distance; collisions = 0; mission completion.  
 - **Platform:** bus latency p50/p95; uptime; MTTR.  
-- **H₂/LH₂:** turnaround time; boil-off losses; capacity/hour.  
+- **H$_2$/LH$_2$:** turnaround time; boil-off losses; capacity/hour.  
 - **Finance:** % funds to service/R&D; volatility threshold; SLO compliance.
 
 ### Appendix D — BWB-Q100 · First-Level TFA Structure (ATA-57-10 example)
@@ -342,10 +342,10 @@ Compatibility: **minor** = backward-compatible; **major** = with migrators.
 - **FE** — *Federation Entanglement / Contracting*. Federated entanglement and **contracting** with explicit SLOs.  
 - **CB** — *Classical Bit / Companion Binary*. Deterministic, verifiable classical artifacts/binaries.  
 - **QB** — *Bit Cubic (non-quantumised)*. Discrete 3D lifting of classical state (`CB×CB×CB`); **not** a qubit.  
-- **QC / Qubit** — *Full-quantum domain*. Tetrahedral continuum+; includes **transposition time**, **projection time**, and **teleportation-relative delay/phase** (relative to **TP₀**).  
-  - **TP₀ / TP0** — theoretical teleportation baseline.  
-  - **Δt₍TP₎ = t_real − t_TP₀ ≥ 0** — causal delay vs TP₀.  
-  - **Δφ₍TP₎ = (φ_real − φ_TP₀) mod 2π** — phase offset vs TP₀.
+- **QC / Qubit** — *Full-quantum domain*. Tetrahedral continuum+; includes **transposition time**, **projection time**, and **teleportation-relative delay/phase** (relative to **TP$_0$**).  
+  - **TP$_0$ / TP0** — theoretical teleportation baseline.  
+  - **Δt₍TP₎ = t_real − t_TP$_0$ ≥ 0** — causal delay vs TP$_0$.  
+  - **Δφ₍TP₎ = (φ_real − φ_TP$_0$) mod 2π** — phase offset vs TP$_0$.
 
 #### Packs & Engineering Constructs
 - **CAx** — *Computer-Aided X* (umbrella for CAD/CAE/CAM/CAT/CFD).  
@@ -399,7 +399,7 @@ Compatibility: **minor** = backward-compatible; **major** = with migrators.
 - **FCR-1 / FCR-2** — *Formal Checkpoint Review* gates 1 and 2.
 
 #### Hydrogen & Energy
-- **H₂ / LH₂** — *Hydrogen / Liquid Hydrogen*.
+- **H$_2$ / LH$_2$** — *Hydrogen / Liquid Hydrogen*.
 
 #### Domains (reference)
 - **AAA/**, **AAP/**, **CCC/**, **CQH/**, **DDD/**, **EDI/**, **EEE/**, **EER/**, **IIF/**, **IIS/**, **LCC/**, **LIB/**, **MEC/**, **OOO/**, **PPP/**

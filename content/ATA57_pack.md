@@ -1,1 +1,5 @@
-# ATA57 Pack\n\nPlaceholder for ATA57 content pack.
+# ATA57_pack - Placeholder
+
+This pack is under development for BWB-Q100 TechPubs ACRF.
+
+See `utcs/manifest.yaml` for bundle structure.

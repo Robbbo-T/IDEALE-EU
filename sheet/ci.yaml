@@ -1,5 +1,5 @@
 # UTCS CI Configuration
-# Validation and compliance checks
+# Validation, compliance checks, build order, and outputs
 
 validation:
   manifest:
@@ -18,7 +18,6 @@ validation:
 
 compliance:
   ampel360_commons:
-    # Only allow specific subdirectories under AMPEL360/
     allowed_dirs:
       - ontology
       - deontology
@@ -28,7 +27,6 @@ compliance:
       - lineage
       - README.md
     
-    # Forbidden patterns (app code indicators)
     forbidden_dirs:
       - src
       - app
@@ -37,7 +35,6 @@ compliance:
       - bin
   
   pax_orientation:
-    # Only OB/OFF allowed, no ONB/OUT
     allowed:
       - OB
       - OFF
@@ -50,3 +47,13 @@ canon:
   utcs: "UiX Threading Context/Content/Cache & Structure/Style/Sheet"
   qox: "Quantum Optimizations"
   pax: "OB/OFF only"
+
+build:
+  order: chapters.txt
+  outputs:
+    - cache/techpubs_overview.pdf
+    - cache/techpubs_overview.html
+
+evidence:
+  sbom: evidence/sbom.spdx.json
+  checksums: evidence/checksums.sha256
