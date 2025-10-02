@@ -1,0 +1,15 @@
+bundles:
+  content:
+    - content/ATA57_pack.md
+    - content/ATA53_pack.md
+    - content/ATA28_pack.md
+    - content/ATA42_pack.md
+    - content/ATA22_pack.md
+    - content/ATA45_pack.md
+    - content/ATA46_pack.md
+    - content/ATA7X_pack.md
+    - content/appendix_f_glossary.md
+  sheet:
+    - sheet/Makefile
+    - sheet/ci.yaml
+    - sheet/chapters.txt
