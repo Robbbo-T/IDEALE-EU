@@ -27,7 +27,7 @@ sbom:
 
 hash:
 	@mkdir -p ../evidence
-	@sha256sum ../cache/techpubs_overview.pdf > ../evidence/checksums.sha256
+	@sha256sum ../cache/techpubs_overview.pdf ../cache/techpubs_overview.html > ../evidence/checksums.sha256
 
 tag:
 	@git tag -s ac-rf-v0.1 -m "BWBQ100 TechPubs Advanced Copies (Research Foresights)"
