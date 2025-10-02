@@ -1,0 +1,9 @@
+# S1000D DMC Register (skeleton; fill in per PM)
+model_ident: GAIAS-MSN
+issue: 01
+language: EN
+items:
+  - sns: 00-00
+    info_code: 000
+    item_loc: A
+    dmc: "GAIAS-MSN-00-000-A-01-EN-00"

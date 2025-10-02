@@ -1,0 +1,3 @@
+# CI configuration placeholder for UTCS bundling
+# Referenced by platform manifests
+version: 1

@@ -1,0 +1,53 @@
+name: UTCS Build & CSDB Federation
+
+on:
+  pull_request:
+    branches: [ "**" ]
+  push:
+    branches: [ "feat/**", "main" ]
+
+jobs:
+  federation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Validate UTCS federation index
+        run: make -C sheet utcs-federation
+      
+      - name: Lint canon (OB/OFF, QOx, AMPEL360 commons)
+        run: make -C sheet csdb-lint
+
+  bundle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Pandoc
+        uses: r-lib/actions/setup-pandoc@v2
+      
+      - name: Build all (placeholder)
+        run: |
+          sudo apt-get update && sudo apt-get install -y make
+          make -C sheet build-all
+      
+      - name: Generate SBOM (SPDX-JSON)
+        uses: anchore/sbom-action@v0
+        with:
+          path: "."
+          format: "spdx-json"
+          output-file: "evidence/sbom.spdx.json"
+      
+      - name: Hash root artifact (if present)
+        run: |
+          mkdir -p evidence
+          test -f cache/techpubs_overview.pdf && sha256sum cache/techpubs_overview.pdf > evidence/checksums.sha256 || echo "no root pdf yet"
+      
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: utcs-federation
+          path: |
+            utcs/federation.yaml
+            platforms/**/utcs/manifest.yaml
+            evidence/**

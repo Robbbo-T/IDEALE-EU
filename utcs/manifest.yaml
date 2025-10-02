@@ -1,0 +1,23 @@
+utcs-version: 1.0
+artifact: "IDEALE-EU-ROOT"
+bridge: "QS→FWD→UE→FE→CB→QB"
+bundles:
+  context:
+    - ../README.md
+    - ../OVERVIEW.md
+  content:
+    - ../platforms/
+  cache:
+    - ../evidence/
+  structure:
+    - utcs/federation.yaml
+  style: []
+  sheet:
+    - sheet/Makefile
+    - sheet/ci.yaml
+hashes:
+  algo: sha256
+  files: []
+signatures:
+  git-tag: ""
+  additional: []

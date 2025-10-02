@@ -1,0 +1,23 @@
+utcs-version: 1.0
+artifact: "INTELLIGENCE-SECRETARY-CSDB-BUNDLE"
+bridge: "QS→FWD→UE→FE→CB→QB"
+bundles:
+  context:
+    - ../README.md
+  content:
+    - ../csdb/register/dmc_register.yml
+    - ../csdb/publication/issue_map.yml
+  cache:
+    - ../csdb/content/   # include built/compiled DM views if applicable
+  structure:
+    - ../icd/interfaces.md
+  style: []
+  sheet:
+    - ../../sheet/Makefile
+    - ../../sheet/ci.yaml
+hashes:
+  algo: sha256
+  files: []
+signatures:
+  git-tag: ""
+  additional: []
