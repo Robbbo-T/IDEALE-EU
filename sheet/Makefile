@@ -30,7 +30,7 @@ csdb-lint:
 	@echo "Lint: QOx definition"
 	@! grep -RInq "Quality Operations" --exclude-dir=.github --exclude=Makefile -- ./platforms/ ./README.md ./OVERVIEW.md ./BWB-Q100/ ./domains/ || (echo "QOx must be 'Quantum Optimizations'" && exit 1)
 	@echo "Lint: AMPEL360 commons — no app code"
-	@! find ./AMPEL360 -maxdepth 2 -type d \( -name src -o -name app -o -name services -o -name cmd \) 2>/dev/null | grep . && echo "OK" || echo "OK (no app dirs found)"
+	@! find ../AMPEL360 -maxdepth 2 -type d \( -name src -o -name app -o -name services -o -name cmd \) 2>/dev/null | grep . && echo "OK" || echo "OK (no app dirs found)"
 	@echo "All lints passed"
 
 utcs-federation:
