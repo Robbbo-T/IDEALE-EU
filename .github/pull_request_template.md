@@ -31,7 +31,7 @@ Digital Platforms :: Six CSDBs + UTCS Federation (AMPEL360 · GAIA-AIR · GAIA-S
 * [x] **Bridge:** QS→FWD→UE→FE→CB→QB
 * [x] **UTCS:** UiX Threading **Context/Content/Cache** and **Structure/Style/Sheet**
 * [x] **QOx:** Quantum Optimizations (no “Quality Operations”)
-* [x] **PAx orientation:** **ONB/OUT** only (no “OB/OFF”)
+* [x] **PAx orientation:** **OB/OFF** only (no “ONB/OUT”)
 * [x] **AMPEL360:** commons semantics; **no app code** (`src/`, `app/`, `services/`, `cmd/` absent)
 
 ## CI / Automation
