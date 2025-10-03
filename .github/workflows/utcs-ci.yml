@@ -75,19 +75,19 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: techpubs_overview_pdf
-          path: sheet/../cache/techpubs_overview.pdf
+          path: cache/techpubs_overview.pdf
       - name: Upload HTML artifact
         uses: actions/upload-artifact@v4
         with:
           name: techpubs_overview_html
-          path: sheet/../cache/techpubs_overview.html
+          path: cache/techpubs_overview.html
       - name: Upload SBOM artifact
         uses: actions/upload-artifact@v4
         with:
           name: sbom
-          path: sheet/../evidence/sbom.spdx.json
+          path: evidence/sbom.spdx.json
       - name: Upload Checksum artifact
         uses: actions/upload-artifact@v4
         with:
           name: checksums
-          path: sheet/../evidence/checksums.sha256
+          path: evidence/checksums.sha256
