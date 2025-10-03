@@ -20,7 +20,7 @@ build-all:
 	@echo "Build root UTCS + 6 CSDB bundles (placeholder compilation)"
 	@echo "Root UTCS OK"
 	@for p in AMPEL360-CSDB GAIA-AIR-CSDB GAIA-SPACE-CSDB H2-AIRPORT-CSDB BITFINANCE-CSDB INTELLIGENCE-SECRETARY-CSDB; do \
-		test -f ./platforms/$$p/utcs/manifest.yaml || { echo "Missing manifest in $$p"; exit 1; }; \
+		test -f ../platforms/$$p/utcs/manifest.yaml || { echo "Missing manifest in $$p"; exit 1; }; \
 	done
 	@echo "All platform manifests validated"
 
