@@ -24,7 +24,7 @@ def list_tree(root, exclude, max_depth=6):
     return nodes, edges
 
 def sanitize(s):
-    return s.replace("-", "_").replace(".", "_").replace("/", "_")
+    return s.replace("-", "_").replace(".", "_").replace("/", "_").replace(" ", "_")
 
 def render_dot(specs, clusters):
     cfg = {
