@@ -1,5 +1,5 @@
 # sheet/Makefile
-.PHONY: build pdf html sbom hash tag order
+.PHONY: build pdf html sbom hash tag order lint
 
 CHAPTERS_FILE := chapters.txt
 ifneq ("$(wildcard $(CHAPTERS_FILE))","")
@@ -34,3 +34,7 @@ tag:
 
 order:
 	@echo "Build order:" && echo "$(BUILD_MD)" | tr ' ' '\n'
+
+# Add this lint rule (customize the echo or add a real linter)
+lint:
+	@echo "No linting configured."
