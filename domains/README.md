@@ -28,10 +28,10 @@ Interior systems and human factors.
 - **Focus**: Flight deck, passenger cabin, cargo systems
 - **Standards**: CS-25, DO-178C, human factors standards
 
-### CQH - Cryogenics, Quantum & H₂
+### CQH - Cryogenics, Quantum & H$_2$
 Hydrogen systems and quantum technologies.
 - **Path**: `domains/CQH/`
-- **Focus**: H₂/LH₂ systems, cryogenic storage, quantum optimization
+- **Focus**: H$_2$/LH$_2$ systems, cryogenic storage, quantum optimization
 - **Standards**: ISO 19880, NFPA 2, quantum computing best practices
 
 ### DDD - Drainage, Dehumidification & Drying
