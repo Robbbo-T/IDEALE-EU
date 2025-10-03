@@ -15,7 +15,7 @@ def list_tree(root, exclude, max_depth=6):
         nodes.append(rel)
         if p.is_dir():
             for child in sorted(p.iterdir(), key=lambda x: (not x.is_dir(), x.name.lower())):
-                if any(str(child).find(x) != -1 for x in exclude): 
+                if child.name in exclude:
                     continue
                 edges.append((rel, str(child)))
                 walk(child, depth+1)
