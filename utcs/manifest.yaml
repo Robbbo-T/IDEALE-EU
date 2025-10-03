@@ -1,4 +1,8 @@
-# UTCS Manifest (UiX Threading Context/Content/Cache & Structure/Style/Sheet)
+<# UTCS Manifest (UiX Threading Context/Content/Cache & Structure/Style/Sheet)
+utcs-version: 1.0
+artifact: "IDEALE-EU-ROOT"
+bridge: "QS→FWD→UE→FE→CB→QB"
+
 title: "BWB-Q100 Technical Publication"
 authors:
   - "Amedeo Pelliccia"
@@ -46,3 +50,11 @@ commons:
   source_data: AMPEL360/source_data/
   schemas: AMPEL360/schemas/
   lineage: AMPEL360/lineage/registry.yaml
+
+hashes:
+  algo: sha256
+  files: []
+
+signatures:
+  git-tag: ""
+  additional: []

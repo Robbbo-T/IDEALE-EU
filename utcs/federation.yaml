@@ -1,0 +1,20 @@
+# UTCS Federation — Digital Platforms
+version: 1
+bridge: "QS→FWD→UE→FE→CB→QB"
+platforms:
+  - name: AMPEL360-CSDB
+    manifest: platforms/AMPEL360-CSDB/utcs/manifest.yaml
+  - name: GAIA-AIR-CSDB
+    manifest: platforms/GAIA-AIR-CSDB/utcs/manifest.yaml
+  - name: GAIA-SPACE-CSDB
+    manifest: platforms/GAIA-SPACE-CSDB/utcs/manifest.yaml
+  - name: H2-AIRPORT-CSDB
+    manifest: platforms/H2-AIRPORT-CSDB/utcs/manifest.yaml
+  - name: BITFINANCE-CSDB
+    manifest: platforms/BITFINANCE-CSDB/utcs/manifest.yaml
+  - name: INTELLIGENCE-SECRETARY-CSDB
+    manifest: platforms/INTELLIGENCE-SECRETARY-CSDB/utcs/manifest.yaml
+policy:
+  pax_orientation: ["OB","OFF"]     # enforce OB/OFF
+  qox: "Quantum Optimizations"
+  ampel360_commons: "AMPEL360 is progenitor (ontology/deontology/source_data)"
