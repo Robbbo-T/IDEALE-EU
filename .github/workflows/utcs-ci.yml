@@ -1,70 +1,91 @@
-name: UTCS Build & CSDB Federation
+name: UTCS CI
 
 on:
   push:
-    branches:
-      - main
-      - master
+    branches: [ main, master, 'feat/**' ]
   pull_request:
+    branches: [ main, master ]
 
 jobs:
-  build:
+  lint-canon:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - name: Validate UTCS manifest presence
+        run: test -f utcs/manifest.yaml
+      - name: Lint AMPEL360 Commons Enforcement
+        run: make -C sheet lint
 
-      - name: Set up Python 3.10
+  validate-schemas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
+      - name: Install jsonschema
+        run: pip install jsonschema pyyaml
+      - name: Validate manifest schema
+        run: |
+          python -c "
+          import yaml
+          import jsonschema
+          import sys
+          # Load manifest
+          with open('utcs/manifest.yaml') as f:
+              manifest = yaml.safe_load(f)
+          # Define schema (example, adjust as needed)
+          schema = {
+              'type': 'object',
+              'properties': {
+                  'title': {'type': 'string'},
+                  'version': {'type': 'string'},
+                  'authors': {'type': 'array', 'items': {'type': 'string'}}
+              },
+              'required': ['title', 'version', 'authors']
+          }
+          try:
+              jsonschema.validate(instance=manifest, schema=schema)
+          except jsonschema.ValidationError as e:
+              print('Schema validation failed:', e)
+              sys.exit(1)
+          "
 
+  build-utcs:
+    runs-on: ubuntu-latest
+    needs: [lint-canon, validate-schemas]
+    steps:
+      - uses: actions/checkout@v4
       - name: Install LaTeX dependencies
         run: sudo apt-get update && sudo apt-get install -y texlive-latex-extra
-
       - name: Install Pandoc
         run: sudo apt-get install -y pandoc
-
-      # If you use pip for Python dependencies, add here:
-      # - name: Install Python dependencies
-      #   run: pip install -r requirements.txt
-
       - name: Install syft
-        run: |
-          curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
-
+        run: curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
       - name: Build PDF
         run: make -C sheet pdf
-
       - name: Build HTML
         run: make -C sheet html
-
       - name: Generate SBOM
         run: make -C sheet sbom
-
       - name: Generate Hashes
         run: make -C sheet hash
-
-      # Optionally, upload artifacts for inspection
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
         with:
           name: techpubs_overview_pdf
           path: cache/techpubs_overview.pdf
-
       - name: Upload HTML artifact
         uses: actions/upload-artifact@v4
         with:
           name: techpubs_overview_html
           path: cache/techpubs_overview.html
-
       - name: Upload SBOM artifact
         uses: actions/upload-artifact@v4
         with:
           name: sbom
           path: evidence/sbom.spdx.json
-
       - name: Upload Checksum artifact
         uses: actions/upload-artifact@v4
         with:

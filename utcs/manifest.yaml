@@ -1,3 +1,18 @@
+# UTCS Manifest (UiX Threading Context/Content/Cache & Structure/Style/Sheet)
+title: "BWB-Q100 Technical Publication"
+authors:
+  - "Amedeo Pelliccia"
+  - "Copilot"
+version: "1"
+progenitor: AMPEL360
+product: BWB-Q100
+
+context:
+  domain: AAA
+  product: BWB-Q100
+  version: H0
+  environment: development
+
 bundles:
   content:
     - content/ATA57_pack.md
@@ -9,7 +24,25 @@ bundles:
     - content/ATA46_pack.md
     - content/ATA7X_pack.md
     - content/appendix_f_glossary.md
+    - content/appendix_g_ampel360_commons.md
   sheet:
     - sheet/Makefile
     - sheet/ci.yaml
     - sheet/chapters.txt
+  structure:
+    - structure/s1000d_paths.md
+    - structure/dmc_register.yml
+    - structure/icd_map.md
+    - AMPEL360/lineage/registry.yaml
+
+cache:
+  dependencies:
+    - AMPEL360/schemas/program.identity.schema.json
+    - BWB-Q100/program.identity.json
+
+commons:
+  ontology: AMPEL360/ontology/
+  deontology: AMPEL360/deontology/
+  source_data: AMPEL360/source_data/
+  schemas: AMPEL360/schemas/
+  lineage: AMPEL360/lineage/registry.yaml

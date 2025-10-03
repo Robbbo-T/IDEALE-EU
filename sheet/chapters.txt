@@ -7,3 +7,4 @@ content/ATA45_pack.md
 content/ATA46_pack.md
 content/ATA7X_pack.md
 content/appendix_f_glossary.md
+content/appendix_g_ampel360_commons.md

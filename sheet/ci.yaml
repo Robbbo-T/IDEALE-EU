@@ -1,10 +1,59 @@
-# CI configuration for UTCS bundle
-# See .github/workflows/utcs-ci.yml for actual workflow implementation
+# UTCS CI Configuration
+# Validation, compliance checks, build order, and outputs
+
+validation:
+  manifest:
+    required: true
+    path: utcs/manifest.yaml
+  
+  program_identity:
+    required: true
+    schema: AMPEL360/schemas/program.identity.schema.json
+    instances:
+      - BWB-Q100/program.identity.json
+  
+  lineage:
+    required: true
+    path: AMPEL360/lineage/registry.yaml
+
+compliance:
+  ampel360_commons:
+    allowed_dirs:
+      - ontology
+      - deontology
+      - source_data
+      - schemas
+      - contracts
+      - lineage
+      - README.md
+    
+    forbidden_dirs:
+      - src
+      - app
+      - services
+      - cmd
+      - bin
+  
+  pax_orientation:
+    allowed:
+      - OB
+      - OFF
+    forbidden:
+      - ONB
+      - OUT
+
+canon:
+  thread_flow: "QS→FWD→UE→FE→CB→QB"
+  utcs: "UiX Threading Context/Content/Cache & Structure/Style/Sheet"
+  qox: "Quantum Optimizations"
+  pax: "OB/OFF only"
+
 build:
   order: chapters.txt
   outputs:
     - cache/techpubs_overview.pdf
     - cache/techpubs_overview.html
+
 evidence:
   sbom: evidence/sbom.spdx.json
   checksums: evidence/checksums.sha256
