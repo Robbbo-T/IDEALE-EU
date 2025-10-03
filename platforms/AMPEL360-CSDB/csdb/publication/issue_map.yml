@@ -1,0 +1,6 @@
+publications:
+  - pm_id: PM-BWBQ100-BASELINE
+    title: "BWB-Q100 Technical Publications — Baseline"
+    dmc_refs:
+      - "AMPEL360-BWBQ100-57-10-000-A-01-EN-00"
+      - "AMPEL360-BWBQ100-28-20-200-A-01-EN-00"

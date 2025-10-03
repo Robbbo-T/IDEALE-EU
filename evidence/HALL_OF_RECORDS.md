@@ -75,7 +75,7 @@ release:
 - [ ] GAIA simulation and ingestion
 - [ ] Swarm 10-20 agents
 - [ ] 360PLUS demo
-- [ ] H₂/LH₂ model
+- [ ] H$_2$/LH$_2$ model
 - [ ] Finance whitepaper
 - [ ] Complete SBOM
 - [ ] Signed git tag

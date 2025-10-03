@@ -1,30 +1,76 @@
+# UTCS Manifest (UiX Threading Context/Content/Cache & Structure/Style/Sheet)
 utcs-version: 1.0
-artifact: "ASI-T2-ROOT"
+artifact: "IDEALE-EU-ROOT"
 bridge: "QS→FWD→UE→FE→CB→QB"
-bundles:
-  context:
+
+title: "BWB-Q100 Technical Publication"
+authors:
+  - "Amedeo Pelliccia"
+  - "Copilot"
+version: "1"
+progenitor: AMPEL360
+product: BWB-Q100
+
+context:
+  domain: AAA
+  product: BWB-Q100
+  version: H0
+  environment: development
+  extra:
     - README.md
     - OVERVIEW.md
     - IMPLEMENTATION_SUMMARY.md
     - agency/the_garden/README.md
     - agency/the_garden/curation/policy.md
+
+bundles:
   content:
+    - content/ATA57_pack.md
+    - content/ATA53_pack.md
+    - content/ATA28_pack.md
+    - content/ATA42_pack.md
+    - content/ATA22_pack.md
+    - content/ATA45_pack.md
+    - content/ATA46_pack.md
+    - content/ATA7X_pack.md
+    - content/appendix_f_glossary.md
+    - content/appendix_g_ampel360_commons.md
     - CITATION.cff
     - CODE_OF_CONDUCT.md
     - CONTRIBUTING.md
     - LICENSE.md
     - agency/the_garden/curation/catalog.yaml
     - agency/the_garden/curation/catalog.schema.json
-  cache:
-    - cache/carpet_trees.pdf
-  structure:
-    - print/specs/carpet_trees.yaml
-  style: []
   sheet:
+    - sheet/Makefile
+    - sheet/ci.yaml
+    - sheet/chapters.txt
     - print/scripts/generate_carpet_trees.py
+  structure:
+    - structure/s1000d_paths.md
+    - structure/dmc_register.yml
+    - structure/icd_map.md
+    - AMPEL360/lineage/registry.yaml
+    - print/specs/carpet_trees.yaml
+
+cache:
+  dependencies:
+    - AMPEL360/schemas/program.identity.schema.json
+    - BWB-Q100/program.identity.json
+  artifacts:
+    - cache/carpet_trees.pdf
+
+commons:
+  ontology: AMPEL360/ontology/
+  deontology: AMPEL360/deontology/
+  source_data: AMPEL360/source_data/
+  schemas: AMPEL360/schemas/
+  lineage: AMPEL360/lineage/registry.yaml
+
 hashes:
   algo: sha256
   files: []
+
 signatures:
   git-tag: ""
   additional: []

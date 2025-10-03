@@ -1,0 +1,65 @@
+name: UTCS CI
+
+on:
+  push:
+    branches: [ main, develop, copilot/** ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  validate-manifests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml jsonschema
+
+      - name: Lint YAML files
+        uses: ibiqlik/action-yamllint@v3
+        with:
+          file_or_dir: platforms
+
+      - name: Validate all manifest files
+        run: |
+          set -e
+          for manifest in platforms/*/utcs/manifest.yaml; do
+            echo "Validating $manifest"
+            python <<EOF
+import sys
+import yaml
+import jsonschema
+
+schema = {
+  "type": "object",
+  "properties": {
+    "utcs-version": {"type": "string"},
+    "artifact": {"type": "string"},
+    "bridge": {"type": "string"},
+    "bundles": {"type": "object"},
+    "hashes": {"type": "object"},
+    "signatures": {"type": "object"}
+  },
+  "required": ["utcs-version", "artifact", "bridge", "bundles", "hashes", "signatures"]
+}
+
+try:
+    with open("$manifest") as f:
+        manifest = yaml.safe_load(f)
+    jsonschema.validate(instance=manifest, schema=schema)
+except yaml.YAMLError as e:
+    print("YAML parsing failed:", e)
+    sys.exit(1)
+except jsonschema.ValidationError as e:
+    print("Schema validation failed:", e)
+    sys.exit(1)
+EOF
+          done

@@ -1,5 +1,13 @@
-# AMPEL360-CSDB DMC Register
-# Placeholder for S1000D Data Module Code registration
-# This file will contain DMC registry entries for AMPEL360 CSDB federation
-
-dmc_entries: []
+# S1000D DMC Register (skeleton; fill in per PM)
+model_ident: AMPEL360-BWBQ100
+issue: 01
+language: EN
+items:
+  - sns: 57-10
+    info_code: 000
+    item_loc: A
+    dmc: "AMPEL360-BWBQ100-57-10-000-A-01-EN-00"
+  - sns: 28-20
+    info_code: 200
+    item_loc: A
+    dmc: "AMPEL360-BWBQ100-28-20-200-A-01-EN-00"
