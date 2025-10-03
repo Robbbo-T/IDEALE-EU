@@ -34,7 +34,7 @@ csdb-lint:
 	@echo "All lints passed"
 
 utcs-federation:
-	@test -f ./utcs/federation.yaml || { echo "Missing utcs/federation.yaml"; exit 1; }
+	@test -f ../utcs/federation.yaml || { echo "Missing utcs/federation.yaml"; exit 1; }
 	@echo "UTCS federation index validated"
 
 # --- Sheet Build Targets (adjust paths if needed) ---
