@@ -1,4 +1,4 @@
-<# UTCS Manifest (UiX Threading Context/Content/Cache & Structure/Style/Sheet)
+# UTCS Manifest (UiX Threading Context/Content/Cache & Structure/Style/Sheet)
 utcs-version: 1.0
 artifact: "IDEALE-EU-ROOT"
 bridge: "QS→FWD→UE→FE→CB→QB"
@@ -16,6 +16,12 @@ context:
   product: BWB-Q100
   version: H0
   environment: development
+  extra:
+    - README.md
+    - OVERVIEW.md
+    - IMPLEMENTATION_SUMMARY.md
+    - agency/the_garden/README.md
+    - agency/the_garden/curation/policy.md
 
 bundles:
   content:
@@ -29,20 +35,30 @@ bundles:
     - content/ATA7X_pack.md
     - content/appendix_f_glossary.md
     - content/appendix_g_ampel360_commons.md
+    - CITATION.cff
+    - CODE_OF_CONDUCT.md
+    - CONTRIBUTING.md
+    - LICENSE.md
+    - agency/the_garden/curation/catalog.yaml
+    - agency/the_garden/curation/catalog.schema.json
   sheet:
     - sheet/Makefile
     - sheet/ci.yaml
     - sheet/chapters.txt
+    - print/scripts/generate_carpet_trees.py
   structure:
     - structure/s1000d_paths.md
     - structure/dmc_register.yml
     - structure/icd_map.md
     - AMPEL360/lineage/registry.yaml
+    - print/specs/carpet_trees.yaml
 
 cache:
   dependencies:
     - AMPEL360/schemas/program.identity.schema.json
     - BWB-Q100/program.identity.json
+  artifacts:
+    - cache/carpet_trees.pdf
 
 commons:
   ontology: AMPEL360/ontology/
