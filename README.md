@@ -19,7 +19,7 @@ doi: TBA
 ---
 
 ## MASTER WHITEPAPER 
-### **ASI-T2 Ecosystem: Aeronautics, Space, Swarm & Sustainable Finance under TFA V2**
+### **ASI-T2 Ecosystem: Aerospace Super Intelligence**
 
 > **IDEALE-EU — Intelligence, Defense, Energy, Aerospace, Logistics, ESG (EU).**  
 > Guiding strategy, structure, threading, and evidence across foundational EU nodes.
