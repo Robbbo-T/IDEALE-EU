@@ -18,7 +18,7 @@ canonical_hash: pending
 doi: TBA
 ---
 
-## MASTER WHITEPAPER 
+
 ### **ASI-T2 Ecosystem: Aerospace Super Intelligence**
 
 > **IDEALE-EU — Intelligence, Defense, Energy, Aerospace, Logistics, ESG (EU).**  
