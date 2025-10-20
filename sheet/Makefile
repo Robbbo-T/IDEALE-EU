@@ -1,4 +1,5 @@
-.PHONY: build-all csdb-lint utcs-federation help build pdf html sbom hash tag order lint
+.PHONY: build-all csdb-lint utcs-federation help build pdf html sbom hash tag order lint \
+        print-carpet pdf-carpet lint-agency
 
 # --- UTCS Federation Build Targets ---
 help:
@@ -14,6 +15,9 @@ help:
 	@echo "  tag               - Tag the release"
 	@echo "  order             - Show build order"
 	@echo "  lint              - Run linter"
+	@echo "  print-carpet      - Generate DOT for carpet trees (Agency/PRINT)"
+	@echo "  pdf-carpet        - Generate carpet trees PDF (Agency/PRINT)"
+	@echo "  lint-agency       - Lint Agency catalog/schema"
 
 # Build-all placeholder
 build-all:
@@ -74,3 +78,19 @@ order:
 
 lint:
 	@echo "No linting configured."
+
+# --- Agency /the_garden and PRINT carpet trees ---
+print-carpet:
+	@mkdir -p ../cache
+	cd .. && python3 print/scripts/generate_carpet_trees.py --spec print/specs/carpet_trees.yaml --out-dot cache/carpet_trees.dot
+	@echo "DOT generated at cache/carpet_trees.dot"
+
+pdf-carpet: print-carpet
+	@which dot >/dev/null || (echo "Graphviz not installed" && exit 1)
+	cd .. && dot -Tpdf cache/carpet_trees.dot -o cache/carpet_trees.pdf
+	@echo "PDF generated at cache/carpet_trees.pdf"
+
+lint-agency:
+	@test -f ../agency/the_garden/curation/catalog.yaml
+	@test -f ../agency/the_garden/curation/catalog.schema.json
+	@cd .. && python3 -c "import json, yaml; from jsonschema import validate; schema = yaml.safe_load(open('agency/the_garden/curation/catalog.schema.json')); doc = yaml.safe_load(open('agency/the_garden/curation/catalog.yaml')); validate(instance=doc, schema=schema); print('Catalog validates.')"

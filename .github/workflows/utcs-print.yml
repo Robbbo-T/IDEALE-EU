@@ -1,0 +1,28 @@
+name: UTCS — Agency & PRINT (carpet trees)
+on:
+  pull_request:
+    branches: ["**"]
+  push:
+    branches: ["feat/**","main"]
+jobs:
+  lint-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python & Graphviz
+        uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: sudo apt-get update && sudo apt-get install -y graphviz make
+      - name: Install jsonschema
+        run: python -m pip install --upgrade pip jsonschema pyyaml
+      - name: Lint agency catalog
+        run: make -C sheet lint-agency
+      - name: Build carpet trees PDF
+        run: make -C sheet pdf-carpet
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: carpet-trees
+          path: |
+            cache/carpet_trees.dot
+            cache/carpet_trees.pdf

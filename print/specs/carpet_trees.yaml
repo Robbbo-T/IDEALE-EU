@@ -1,0 +1,23 @@
+size: "A1"         # A0|A1|A2
+orientation: "landscape"
+rankdir: "LR"
+nodesep: 0.25
+ranksep: 0.35
+fontname: "Inter"
+max_depth: 6
+exclude:
+  - ".git"
+  - ".github"
+  - "cache"
+  - "evidence"
+  - "node_modules"
+  - "__pycache__"
+clusters:
+  - label: "BWB-Q100 / AAA / ATA-57"
+    root: "BWB-Q100/domains/AAA/ata/ATA-57"
+  - label: "Platforms / CSDB federation"
+    root: "platforms"
+  - label: "Agency / the_garden"
+    root: "agency/the_garden"
+  - label: "AMPEL360 / commons"
+    root: "AMPEL360"
