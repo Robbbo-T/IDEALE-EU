@@ -200,6 +200,7 @@ software_passport:
 ### Multi-Vehicle Tracking
 Supports tracking across all ASI-T2 platforms:
 - **AMPEL360**: BWB aircraft materials and software
+- **AMPEL_360PLUS**: Space tourism spacecraft materials and software
 - **GAIA SPACE**: Satellite components and flight software
 - **GAIA AIR**: Swarm agent hardware and control software
 - **H2 AIRPORT**: Infrastructure materials and operational software

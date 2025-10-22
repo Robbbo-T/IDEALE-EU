@@ -73,7 +73,7 @@ docs/
 - **MAL Integration**: Control, telemetry, and audit topics
 - **UTCS Threading**: Complete Context/Content/Cache + Structure/Style/Sheet
 - **Evidence Plane**: Integration with evidence/passports/ storage
-- **Multi-Platform Support**: AMPEL360, GAIA SPACE, GAIA AIR, H2 AIRPORT
+- **Multi-Platform Support**: AMPEL360, AMPEL_360PLUS, GAIA SPACE, GAIA AIR, H2 AIRPORT
 
 #### Schemas
 ✅ `material_passport.schema.json` (JSON Schema Draft 2020-12)
@@ -304,6 +304,12 @@ Unified tracking across all ASI-T2 programs:
 - Flight hour and cycle tracking
 - Maintenance scheduling for BWB fleet
 - Parts procurement with traceability
+
+### AMPEL_360PLUS
+- Space tourism spacecraft materials and software passports
+- Mission cycle and orbital tracking
+- Spacecraft-specific maintenance scheduling
+- Specialized component procurement for space operations
 
 ### GAIA SPACE
 - Satellite component passports

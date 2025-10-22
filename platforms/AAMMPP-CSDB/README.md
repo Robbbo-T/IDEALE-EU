@@ -18,8 +18,8 @@ The **Aerospace Assets Management, Maintenance & Procurement Platform (AAMMPP)**
 ## Scope
 
 ### Asset Management
-- **Aircraft**: AMPEL360, AMPEL_360PLUS
-- **Spacecraft**: GAIA SPACE constellation
+- **Aircraft**: AMPEL360 (BWB aircraft)
+- **Spacecraft**: GAIA SPACE constellation, AMPEL_360PLUS (space tourism spacecraft)
 - **Autonomous Systems**: GAIA AIR, IDRO-HYDROROBOT, EU Defense Wall
 - **Infrastructure**: H2 Airport facilities and equipment
 - **Ground Support**: Test equipment, tooling, support systems
@@ -263,10 +263,16 @@ AAMMPP consumes passport data from AMSDP for:
 ### Platform Integration
 
 #### AMPEL360
-- Aircraft asset tracking
+- BWB aircraft asset tracking
 - Flight hour and cycle tracking
 - Maintenance scheduling for BWB fleet
 - Parts procurement for airframe and systems
+
+#### AMPEL_360PLUS
+- Space tourism spacecraft asset tracking
+- Mission cycle and orbital tracking
+- Spacecraft-specific maintenance scheduling
+- Specialized component procurement for space operations
 
 #### GAIA SPACE
 - Satellite asset management
