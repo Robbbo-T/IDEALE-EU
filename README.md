@@ -82,7 +82,7 @@ The backbone is **MAL (Master Application Layer/Logic)**—the domain PLC that s
 - **IIS/** — Information & Intelligence Systems (cybersecurity, defense)  
 - **LCC/** — Linkages, Control & Communications  
 - **LIB/** — Logistics, Inventory & Blockchain  
-- **MEC/** — Mechanical Systems Modules (hydraulics, landing gear…)  
+- **MMM/** — Mechanical Systems Modules (hydraulics, landing gear…), Material Monitoring (self-healing)  
 - **OOO/** — OS, Ontologies & Office Interfaces  
 - **PPP/** — Propulsion & Fuel Systems
 
