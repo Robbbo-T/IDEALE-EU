@@ -18,10 +18,30 @@ The **Aerospace Material & Software Digital Passports (AMSDP)** module provides 
 ## Scope
 
 ### Material Passports
+
+#### Physical Components
+- **Primary Structures**: Fuselage, wings, tail assemblies, main structural elements
+- **Secondary Structures**: Frames, skins, bulkheads, stringers, ribs, spars
+- **Installation Hardware**: Fasteners, bolts, nuts, washers, rivets, pins, clamps, brackets, hinges
 - **Raw Materials**: Metals, composites, polymers, ceramics
-- **Components**: Fasteners, electronics, hydraulics, systems
 - **Assemblies**: Sub-assemblies and integrated systems
-- **Lifecycle Events**: Receipt, inspection, installation, maintenance, removal, disposal
+
+#### Electronic & Sensor Components
+- **Information Hardware**: Computers, processors, memory, storage, displays, interfaces, network equipment
+- **Antennas**: VHF, UHF, SATCOM, GPS, GNSS, radar, datalink, WiFi, 5G
+- **Sensors**: Temperature, pressure, accelerometers, gyroscopes, magnetometers, GPS, radar, lidar, cameras, vibration, strain, flow sensors
+
+#### Digital Assets & Licenses
+- **Software Licenses**: Proprietary, open-source, commercial, subscription, perpetual licenses
+- **Firmware Licenses**: Embedded firmware, OEM licenses, device-bound firmware
+- **SLAs**: Service Level Agreements with providers, support contracts, maintenance agreements
+
+#### Models & Simulations
+- **Engineering Models**: CAD, CAE, CFD, FEA, simulation models, digital twins, mathematical models
+- **Pretrained AI Models**: Large Language Models (LLMs), vision models, audio models, multimodal models, AI agents, reinforcement learning models
+
+#### Lifecycle Events
+- Receipt, inspection, installation, maintenance, removal, disposal for all component types
 
 ### Software Passports
 - **Source Code**: Version control integration, commit signatures
@@ -38,8 +58,17 @@ Each passport contains:
 ```yaml
 passport:
   id: AMSDP-{TYPE}-{SERIAL}-{VERSION}
-  type: MATERIAL | SOFTWARE | ASSEMBLY
+  type: MATERIAL | SOFTWARE | ASSEMBLY | PRIMARY_STRUCTURE | SECONDARY_STRUCTURE | 
+        INSTALLATION_HARDWARE | INFORMATION_HARDWARE | ANTENNA | SENSOR | 
+        SOFTWARE_LICENSE | FIRMWARE_LICENSE | SLA | ENGINEERING_MODEL | PRETRAINED_MODEL
   classification: PUBLIC | RESTRICTED | CONTROLLED
+  
+  component_category: 
+    # Detailed classification for specific component types
+    PRIMARY_STRUCTURE | SECONDARY_STRUCTURE | INSTALLATION_HARDWARE | 
+    INFORMATION_HARDWARE | ANTENNA | SENSOR | SOFTWARE_LICENSE | 
+    FIRMWARE_LICENSE | SLA | ENGINEERING_MODEL | PRETRAINED_MODEL |
+    RAW_MATERIAL | COMPONENT | ASSEMBLY
   
   identity:
     part_number: string
@@ -57,6 +86,20 @@ passport:
     composition: {elements, percentages}
     mechanical: {tensile, yield, hardness}
     environmental: {temp_min, temp_max, corrosion}
+  
+  component_specific:
+    # Component-specific properties based on category
+    structure: {structural_type, load_rating, stress_analysis}
+    hardware: {hardware_type, torque_spec, installation_procedure}
+    information_hardware: {device_type, specifications, firmware_version, security_certifications}
+    antenna: {antenna_type, frequency_range, gain_dbi, polarization, mounting_location}
+    sensor: {sensor_type, measurement_range, accuracy, sampling_rate_hz, calibration}
+    software_license: {license_type, license_key, licensed_to, seats, expiry_date, renewal_terms}
+    firmware_license: {firmware_name, version, license_type, device_binding, update_policy}
+    sla: {service_name, provider, agreement_number, service_levels, penalties, renewal_terms}
+    engineering_model: {model_type, software_tool, validation_status, validation_report}
+    pretrained_model: {model_name, model_type, architecture, parameters_count, training_data, 
+                      performance_metrics, license, ethical_considerations, deployment_requirements}
     
   quality_records:
     inspection_reports: [{date, inspector, result, attachments}]
@@ -160,6 +203,94 @@ Supports tracking across all ASI-T2 platforms:
 - **GAIA SPACE**: Satellite components and flight software
 - **GAIA AIR**: Swarm agent hardware and control software
 - **H2 AIRPORT**: Infrastructure materials and operational software
+
+## Component Type Details
+
+### Primary Structures
+Primary load-bearing structural elements:
+- **Types**: Fuselage sections, wing boxes, tail structures, main frames
+- **Tracked Properties**: Structural type, load ratings (ultimate/limit), stress analysis results
+- **Compliance**: Structural certification, fatigue analysis, damage tolerance
+- **Lifecycle**: Manufacturing records, NDT inspections, repair history
+
+### Secondary Structures
+Supporting and aerodynamic structures:
+- **Types**: Frames, skins, bulkheads, stringers, ribs, spars, fairings
+- **Tracked Properties**: Material specifications, attachment methods, surface treatments
+- **Quality**: Dimensional inspection, surface finish, corrosion protection
+- **Maintenance**: Inspection intervals, repair procedures, modification records
+
+### Installation Hardware
+Fasteners and installation components:
+- **Types**: Bolts, nuts, washers, rivets, pins, clamps, brackets, hinges
+- **Tracked Properties**: Hardware type, torque specifications, installation procedures
+- **Standards**: Aerospace fastener standards (e.g., AN, MS, NAS)
+- **Critical**: Installation torque records, locking methods, inspection criteria
+
+### Information Hardware
+Computing and processing equipment:
+- **Types**: Computers, processors, memory modules, storage devices, displays, network interfaces
+- **Tracked Properties**: Device specifications, firmware versions, security certifications
+- **Security**: Encryption capabilities, secure boot, tamper detection
+- **Updates**: Firmware update history, configuration management, security patches
+
+### Antennas
+RF communication and navigation antennas:
+- **Types**: VHF, UHF, SATCOM, GPS, GNSS, radar, datalink, WiFi, 5G
+- **Tracked Properties**: Frequency range, gain, polarization, mounting location
+- **Performance**: VSWR measurements, pattern tests, integration testing
+- **Certification**: RF certification, EMI/EMC compliance, aviation authority approval
+
+### Sensors
+Measurement and monitoring devices:
+- **Types**: Temperature, pressure, accelerometers, gyroscopes, magnetometers, GPS, radar, lidar, cameras, vibration, strain, flow sensors
+- **Tracked Properties**: Measurement range, accuracy, sampling rate, calibration status
+- **Calibration**: Last calibration date, next due date, calibration certificates
+- **Integration**: Installation location, wiring, data interface, power requirements
+
+### Software Licenses
+Software usage rights and agreements:
+- **Types**: Proprietary, open-source, commercial, subscription, perpetual, trial licenses
+- **Tracked Properties**: License key, seats, expiry date, renewal terms, support level
+- **Compliance**: License compliance tracking, audit readiness, usage monitoring
+- **Management**: License allocation, renewal reminders, cost tracking
+
+### Firmware Licenses
+Embedded firmware usage rights:
+- **Types**: Proprietary, open-source, embedded, OEM firmware
+- **Tracked Properties**: Version, device binding, update policy, cryptographic signature
+- **Security**: Signed firmware validation, secure boot integration, rollback protection
+- **Updates**: Update history, compatibility tracking, verification procedures
+
+### Service Level Agreements (SLAs)
+Service contracts and performance guarantees:
+- **Components**: Service name, provider, agreement number, start/end dates
+- **Service Levels**: Availability percentage, response times, resolution times, support hours
+- **Compliance**: Performance monitoring, penalty clauses, escalation procedures
+- **Management**: Renewal tracking, performance reports, contract modifications
+
+### Engineering Models
+Analytical and simulation models:
+- **Types**: CAD, CAE, CFD, FEA, simulation models, digital twins, mathematical models
+- **Tracked Properties**: Model type, software tool, version, validation status
+- **Validation**: Validation reports, accuracy metrics, limitations documentation
+- **Usage**: Input parameters, output parameters, use cases, assumptions
+
+### Pretrained AI Models
+Machine learning and AI models:
+- **Types**: Large Language Models (LLMs), vision models, audio models, multimodal models, AI agents, reinforcement learning models
+- **Tracked Properties**: 
+  - Model architecture and parameter count (e.g., 7B, 13B, 70B parameters)
+  - Training data (datasets, cutoff date, languages, domains)
+  - Performance metrics and benchmark results
+  - Ethical considerations (bias assessment, safety measures, intended use, limitations)
+  - Deployment requirements (memory, compute, framework, runtime)
+  - Quantization level (FP16, INT8, INT4)
+  - Fine-tuning history
+- **Licensing**: Model license, usage restrictions, attribution requirements
+- **Governance**: MAL-EEM compliance, ethical AI guidelines, bias mitigation
+- **Updates**: Model versioning, retraining history, performance drift monitoring
+- **Integration**: API endpoints, inference requirements, monitoring hooks
 
 ## Compliance Framework
 
