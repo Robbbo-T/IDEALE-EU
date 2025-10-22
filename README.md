@@ -359,7 +359,7 @@ Compatibility: **minor** = backward-compatible; **major** = with migrators.
 - **CMP** — *Configuration Management Program*
 - **CQA** — *Certification, V&V and Quality Assurance* 
 - **MRO** — *Maintenance, Repair, Overhaul* 
-- **ALAR-CC** — *Supply Services, Chain Traceability, ESG* As Low As Reasaonable Chain Complexity
+- **ALAR-CC** — *Supply Services, Chain Traceability, ESG* (As Low As Reasaonable Chain Complexity)
 - **OB / OFF** — **Onboard / Outboard**.
 
 #### Standards, Safety & Compliance
