@@ -355,7 +355,11 @@ Compatibility: **minor** = backward-compatible; **major** = with migrators.
 - **CAE** — *Computer-Aided Engineering*.  
 - **CAM** — *Computer-Aided Manufacturing*.  
 - **CAT** — *Computer-Aided Testing/Tooling*.  
-- **CFD** — *Computational Fluid Dynamics*.  
+- **CFD** — *Computational Fluid Dynamics*.
+- **CMP** — *Configuration Management Program*
+- **CQA** — *Certification, V&V and Quality Assurance* 
+- **MRO** — *Maintenance, Repair, Overhaul* 
+- **ALAR-CC** — *Supply Services, Chain Traceability, ESG* As Low As Reasaonable Chain Complexity
 - **OB / OFF** — **Onboard / Outboard**.
 
 #### Standards, Safety & Compliance
