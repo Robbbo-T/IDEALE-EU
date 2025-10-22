@@ -122,6 +122,8 @@ See [Master Whitepaper](README.md)
 | [Digital Platform](DIGITAL_PLATFORM/) | H0 Design | Infrastructure |
 | [H$_2$ Airport](H2_AIRPORT/) | H0 Model | Hydrogen operations |
 | [Sustainable Finance](SUSTAINABLE_FINANCE/) | H0 Design | Financial system |
+| [AMSDP](platforms/AMSDP-CSDB/) | H0 Design | Aerospace Material & Software Digital Passports |
+| [AAMMPP](platforms/AAMMPP-CSDB/) | H0 Design | Aerospace Assets Management, Maintenance & Procurement |
 
 ## Roadmap
 

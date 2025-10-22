@@ -1,0 +1,202 @@
+# AMSDP UTCS Bundle Manifest
+# UiX Threading Context/Content/Cache & Structure/Style/Sheet
+
+bundle:
+  id: AMSDP-CSDB-v1.0.0
+  name: Aerospace Material & Software Digital Passports
+  version: 1.0.0
+  classification: PUBLIC-DRAFT
+  
+  # Context: Domain, product, version, environment
+  context:
+    domain: IIS  # Information & Intelligence Systems
+    product: AMSDP
+    version: 1.0.0
+    environment: development
+    tfa_layers:
+      - QS    # Primordial reference
+      - FWD   # Prediction/Probability
+      - UE    # Unit Element/Collapse
+      - FE    # Federation/Contracting
+      - CB    # Classical Bit/Binary
+      - QB    # Bit Cubic (non-quantum)
+    
+  # Content: Artifact references, data products
+  content:
+    documentation:
+      - path: platforms/AMSDP-CSDB/README.md
+        type: primary_documentation
+        hash: pending
+      - path: platforms/AMSDP-CSDB/icd/interfaces.md
+        type: interface_control_document
+        hash: pending
+        
+    schemas:
+      - path: schemas/amsdp/material_passport.schema.json
+        type: json_schema
+        version: 1.0.0
+        hash: pending
+      - path: schemas/amsdp/software_passport.schema.json
+        type: json_schema
+        version: 1.0.0
+        hash: pending
+      - path: schemas/amsdp/lifecycle_event.schema.json
+        type: json_schema
+        version: 1.0.0
+        hash: pending
+      - path: schemas/amsdp/compliance_record.schema.json
+        type: json_schema
+        version: 1.0.0
+        hash: pending
+        
+    csdb:
+      register: platforms/AMSDP-CSDB/csdb/register/dmc_register.yml
+      publication: platforms/AMSDP-CSDB/csdb/publication/issue_map.yml
+      content_dir: platforms/AMSDP-CSDB/csdb/content/
+      
+  # Cache: Dependencies, versions, build artifacts
+  cache:
+    dependencies:
+      - name: MAL
+        version: v1.x
+        type: internal
+        interfaces:
+          - MAL.v1.control
+          - MAL.v1.telemetry
+          - MAL.v1.audit
+      - name: UTCS
+        version: v5.0
+        type: internal
+      - name: Evidence Plane
+        version: v1.0
+        type: internal
+        
+    external_standards:
+      - standard: AS9100
+        version: Rev D
+        scope: Quality management traceability
+      - standard: DO-178C
+        scope: Software lifecycle data
+      - standard: REACH
+        scope: Chemical substance tracking
+      - standard: RoHS
+        scope: Hazardous substance restrictions
+      - standard: SLSA
+        version: v1.0
+        scope: Supply chain attestations
+        
+  # Structure: File organization, references
+  structure:
+    csdb_layout:
+      register: DMC catalog
+      publication: Publication management
+      content: S1000D data modules
+    
+    directories:
+      - icd/          # Interface definitions
+      - utcs/         # UTCS manifests
+      - csdb/         # S1000D content
+      
+    passport_storage:
+      base_path: evidence/passports/
+      organization: "{type}/{year}/{passport_id}.json"
+      types:
+        - MATERIAL
+        - SOFTWARE
+        - ASSEMBLY
+        
+  # Style: Presentation standards, formatting
+  style:
+    documentation:
+      format: Markdown
+      standard: CommonMark
+      
+    passports:
+      formats:
+        - JSON (primary)
+        - PDF (human-readable)
+        - HTML (web view)
+        
+    schemas:
+      format: JSON Schema Draft 2020-12
+      validation: strict
+      
+  # Sheet: Output formats, templates
+  sheet:
+    templates:
+      material_passport_pdf: templates/amsdp/material_passport.pdf.j2
+      software_passport_pdf: templates/amsdp/software_passport.pdf.j2
+      compliance_report: templates/amsdp/compliance_report.html.j2
+      audit_trail: templates/amsdp/audit_trail.pdf.j2
+      
+    outputs:
+      - format: PDF
+        use_case: Regulatory submission
+      - format: HTML
+        use_case: Web dashboard
+      - format: JSON
+        use_case: API responses
+      - format: SPDX
+        use_case: Software passport SBOM
+
+# Integration with other CSDB platforms
+federation:
+  platforms:
+    - name: AAMMPP-CSDB
+      relationship: consumer
+      data_flow: AMSDP provides passport data to AAMMPP
+      topics:
+        - amsdp.integration.aammpp
+        
+    - name: AMPEL360-CSDB
+      relationship: provider
+      data_flow: AMPEL360 materials and software tracked in AMSDP
+      topics:
+        - amsdp.ampel360.*
+        
+    - name: GAIA-SPACE-CSDB
+      relationship: provider
+      data_flow: GAIA SPACE components tracked in AMSDP
+      topics:
+        - amsdp.gaia_space.*
+        
+    - name: GAIA-AIR-CSDB
+      relationship: provider
+      data_flow: GAIA AIR components tracked in AMSDP
+      topics:
+        - amsdp.gaia_air.*
+        
+    - name: H2-AIRPORT-CSDB
+      relationship: provider
+      data_flow: H2 Airport materials tracked in AMSDP
+      topics:
+        - amsdp.h2_airport.*
+
+# Evidence and provenance
+evidence:
+  sbom: evidence/sboms/amsdp-v1.0.0.spdx.json
+  attestations: evidence/attestations/amsdp-v1.0.0.intoto.jsonl
+  hashes: evidence/hashes/amsdp-v1.0.0.sha256
+  signed_tag: v1.0.0
+  doi: pending
+  
+# Compliance
+compliance:
+  mal_eem: compliant
+  export_control: reviewed
+  standards:
+    - AS9100
+    - DO-178C
+    - REACH
+    - RoHS
+    
+# Roadmap alignment
+horizon: H0
+gate: FCR-1
+status: design
+
+# Metadata
+created: 2025-10-22
+author: ASI-T Architecture Team
+maintainer: AMSDP Team
+canonical_hash: pending

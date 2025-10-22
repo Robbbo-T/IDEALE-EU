@@ -1,0 +1,296 @@
+# AAMMPP UTCS Bundle Manifest
+# UiX Threading Context/Content/Cache & Structure/Style/Sheet
+
+bundle:
+  id: AAMMPP-CSDB-v1.0.0
+  name: Aerospace Assets Management, Maintenance & Procurement Platform
+  version: 1.0.0
+  classification: PUBLIC-DRAFT
+  
+  # Context: Domain, product, version, environment
+  context:
+    domain: LIB  # Logistics, Inventory & Blockchain
+    product: AAMMPP
+    version: 1.0.0
+    environment: development
+    tfa_layers:
+      - QS    # Primordial reference
+      - FWD   # Prediction/Probability
+      - UE    # Unit Element/Collapse
+      - FE    # Federation/Contracting
+      - CB    # Classical Bit/Binary
+      - QB    # Bit Cubic (non-quantum)
+    
+  # Content: Artifact references, data products
+  content:
+    documentation:
+      - path: platforms/AAMMPP-CSDB/README.md
+        type: primary_documentation
+        hash: pending
+      - path: platforms/AAMMPP-CSDB/icd/interfaces.md
+        type: interface_control_document
+        hash: pending
+        
+    schemas:
+      - path: schemas/aammpp/asset.schema.json
+        type: json_schema
+        version: 1.0.0
+        hash: pending
+      - path: schemas/aammpp/work_order.schema.json
+        type: json_schema
+        version: 1.0.0
+        hash: pending
+      - path: schemas/aammpp/procurement_request.schema.json
+        type: json_schema
+        version: 1.0.0
+        hash: pending
+      - path: schemas/aammpp/maintenance_event.schema.json
+        type: json_schema
+        version: 1.0.0
+        hash: pending
+        
+    csdb:
+      register: platforms/AAMMPP-CSDB/csdb/register/dmc_register.yml
+      publication: platforms/AAMMPP-CSDB/csdb/publication/issue_map.yml
+      content_dir: platforms/AAMMPP-CSDB/csdb/content/
+      
+  # Cache: Dependencies, versions, build artifacts
+  cache:
+    dependencies:
+      - name: MAL
+        version: v1.x
+        type: internal
+        interfaces:
+          - MAL.v1.control
+          - MAL.v1.telemetry
+          - MAL.v1.audit
+      - name: AMSDP
+        version: v1.0.0
+        type: internal
+        relationship: consumer
+        topics:
+          - amsdp.integration.aammpp
+      - name: UTCS
+        version: v5.0
+        type: internal
+      - name: Evidence Plane
+        version: v1.0
+        type: internal
+        
+    external_standards:
+      - standard: AS9100
+        version: Rev D
+        scope: Quality management and maintenance
+      - standard: ARP4754A
+        scope: Systems development and maintenance
+      - standard: DO-178C
+        scope: Software maintenance records
+      - standard: ATA
+        scope: Maintenance task organization
+      - standard: S1000D
+        scope: Technical documentation
+        
+  # Structure: File organization, references
+  structure:
+    csdb_layout:
+      register: DMC catalog
+      publication: Publication management
+      content: S1000D data modules
+    
+    directories:
+      - icd/          # Interface definitions
+      - utcs/         # UTCS manifests
+      - csdb/         # S1000D content
+      
+    data_storage:
+      base_path: evidence/aammpp/
+      organization: "{type}/{year}/{id}.json"
+      types:
+        - assets
+        - work_orders
+        - procurement_requests
+        - maintenance_events
+        
+  # Style: Presentation standards, formatting
+  style:
+    documentation:
+      format: Markdown
+      standard: CommonMark
+      
+    records:
+      formats:
+        - JSON (primary)
+        - PDF (work orders, compliance)
+        - HTML (dashboards, reports)
+        
+    schemas:
+      format: JSON Schema Draft 2020-12
+      validation: strict
+      
+  # Sheet: Output formats, templates
+  sheet:
+    templates:
+      asset_card: templates/aammpp/asset_card.html.j2
+      work_order_pdf: templates/aammpp/work_order.pdf.j2
+      maintenance_report: templates/aammpp/maintenance_report.pdf.j2
+      procurement_request: templates/aammpp/procurement_request.pdf.j2
+      compliance_report: templates/aammpp/compliance_report.html.j2
+      dashboard: templates/aammpp/dashboard.html.j2
+      
+    outputs:
+      - format: PDF
+        use_case: Work orders, compliance reports
+      - format: HTML
+        use_case: Dashboards, web interface
+      - format: JSON
+        use_case: API responses
+      - format: CSV
+        use_case: Data exports, analytics
+
+# Integration with other CSDB platforms
+federation:
+  platforms:
+    - name: AMSDP-CSDB
+      relationship: consumer
+      data_flow: AAMMPP consumes passport data from AMSDP
+      topics:
+        - amsdp.integration.aammpp
+      operations:
+        - Query material passports
+        - Query software passports
+        - Trigger passport updates
+        
+    - name: AMPEL360-CSDB
+      relationship: bidirectional
+      data_flow: Asset tracking and maintenance for AMPEL360
+      topics:
+        - aammpp.ampel360.*
+      operations:
+        - Track BWB aircraft assets
+        - Manage maintenance schedules
+        - Coordinate parts procurement
+        
+    - name: GAIA-SPACE-CSDB
+      relationship: bidirectional
+      data_flow: Asset tracking and maintenance for GAIA SPACE
+      topics:
+        - aammpp.gaia_space.*
+      operations:
+        - Track satellite assets
+        - Orbital maintenance planning
+        - Component procurement
+        
+    - name: GAIA-AIR-CSDB
+      relationship: bidirectional
+      data_flow: Asset tracking and maintenance for GAIA AIR
+      topics:
+        - aammpp.gaia_air.*
+      operations:
+        - Track swarm agents
+        - Distributed maintenance
+        - Rapid replacement
+        
+    - name: H2-AIRPORT-CSDB
+      relationship: bidirectional
+      data_flow: Asset tracking and maintenance for H2 Airport
+      topics:
+        - aammpp.h2_airport.*
+      operations:
+        - Track infrastructure assets
+        - Facility maintenance
+        - Equipment procurement
+
+# Operational modules
+modules:
+  asset_management:
+    description: Real-time asset tracking and lifecycle management
+    capabilities:
+      - Asset registration and configuration
+      - Location tracking and history
+      - Status and health monitoring
+      - Utilization tracking
+      - Documentation management
+      
+  maintenance_management:
+    description: Comprehensive maintenance planning and execution
+    capabilities:
+      - Work order creation and scheduling
+      - Resource allocation
+      - Inspection workflows
+      - Digital sign-offs
+      - Predictive maintenance
+      
+  procurement_management:
+    description: End-to-end procurement workflows
+    capabilities:
+      - Requisition management
+      - Vendor management
+      - Purchase order generation
+      - Receiving and inspection
+      - Inventory optimization
+      
+  analytics:
+    description: Operational analytics and insights
+    capabilities:
+      - Asset performance metrics
+      - Maintenance metrics
+      - Procurement metrics
+      - Predictive analytics
+      - Compliance reporting
+
+# Evidence and provenance
+evidence:
+  sbom: evidence/sboms/aammpp-v1.0.0.spdx.json
+  attestations: evidence/attestations/aammpp-v1.0.0.intoto.jsonl
+  hashes: evidence/hashes/aammpp-v1.0.0.sha256
+  signed_tag: v1.0.0
+  doi: pending
+  
+# Compliance
+compliance:
+  mal_eem: compliant
+  export_control: reviewed
+  standards:
+    - AS9100
+    - ARP4754A
+    - DO-178C
+    - ATA
+    - S1000D
+    
+# Roadmap alignment
+horizon: H0
+gate: FCR-1
+status: design
+
+# KPIs
+kpis:
+  asset_tracking_coverage:
+    target: 100%
+    unit: percentage
+    description: Percentage of operational assets tracked
+    
+  maintenance_on_time_rate:
+    target: 95%
+    unit: percentage
+    description: Percentage of maintenance completed on schedule
+    
+  procurement_lead_time:
+    target: 15
+    unit: days
+    description: Average time from request to delivery
+    
+  data_completeness:
+    target: 98%
+    unit: percentage
+    description: Percentage of required fields populated
+    
+  system_uptime:
+    target: 99.9%
+    unit: percentage
+    description: System availability
+
+# Metadata
+created: 2025-10-22
+author: ASI-T Architecture Team
+maintainer: AAMMPP Team
+canonical_hash: pending
