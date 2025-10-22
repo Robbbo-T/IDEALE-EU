@@ -1,0 +1,418 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ideale-eu.org/schemas/amsdp/software_passport.schema.json",
+  "title": "Software Passport Schema",
+  "description": "Digital passport for aerospace software artifacts",
+  "type": "object",
+  "required": ["passport", "version"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Schema version (semantic versioning)"
+    },
+    "passport": {
+      "type": "object",
+      "required": ["id", "type", "classification", "identity", "provenance"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^AMSDP-SW-[A-Za-z0-9_-]+-v\\d+\\.\\d+\\.\\d+$",
+          "description": "Unique passport identifier"
+        },
+        "type": {
+          "type": "string",
+          "const": "SOFTWARE",
+          "description": "Passport type"
+        },
+        "classification": {
+          "type": "string",
+          "enum": ["PUBLIC", "RESTRICTED", "CONTROLLED"],
+          "description": "Data classification level"
+        },
+        "identity": {
+          "type": "object",
+          "required": ["name", "version", "git_commit"],
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Software component name"
+            },
+            "version": {
+              "type": "string",
+              "pattern": "^\\d+\\.\\d+\\.\\d+(-[a-zA-Z0-9.]+)?(\\+[a-zA-Z0-9.]+)?$",
+              "description": "Semantic version"
+            },
+            "git_commit": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{40}$",
+              "description": "Git commit SHA"
+            },
+            "build_number": {
+              "type": "string",
+              "description": "Build system identifier"
+            }
+          }
+        },
+        "provenance": {
+          "type": "object",
+          "required": ["repository", "build_system"],
+          "properties": {
+            "repository": {
+              "type": "string",
+              "format": "uri",
+              "description": "Source code repository URL"
+            },
+            "branch": {
+              "type": "string",
+              "description": "Git branch name"
+            },
+            "commit_history": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["sha", "author", "date", "message"],
+                "properties": {
+                  "sha": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{40}$"
+                  },
+                  "author": {
+                    "type": "string"
+                  },
+                  "date": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "message": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "build_system": {
+              "type": "object",
+              "required": ["tool", "version", "date"],
+              "properties": {
+                "tool": {
+                  "type": "string"
+                },
+                "version": {
+                  "type": "string"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            }
+          }
+        },
+        "dependencies": {
+          "type": "object",
+          "required": ["sbom"],
+          "properties": {
+            "sbom": {
+              "type": "string",
+              "format": "uri",
+              "description": "Reference to SBOM file (SPDX or CycloneDX)"
+            },
+            "direct": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["name", "version", "license"],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "version": {
+                    "type": "string"
+                  },
+                  "license": {
+                    "type": "string"
+                  },
+                  "source": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
+              }
+            },
+            "transitive": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["name", "version", "license"],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "version": {
+                    "type": "string"
+                  },
+                  "license": {
+                    "type": "string"
+                  },
+                  "source": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
+              }
+            },
+            "vulnerabilities": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["cve", "severity", "status"],
+                "properties": {
+                  "cve": {
+                    "type": "string",
+                    "pattern": "^CVE-\\d{4}-\\d{4,}$"
+                  },
+                  "severity": {
+                    "type": "string",
+                    "enum": ["CRITICAL", "HIGH", "MEDIUM", "LOW", "NONE"]
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": ["OPEN", "FIXED", "MITIGATED", "ACCEPTED"]
+                  },
+                  "mitigation": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "verification": {
+          "type": "object",
+          "properties": {
+            "tests": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["suite", "coverage", "pass_rate", "date"],
+                "properties": {
+                  "suite": {
+                    "type": "string"
+                  },
+                  "coverage": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                  },
+                  "pass_rate": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                  },
+                  "date": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
+                }
+              }
+            },
+            "static_analysis": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["tool", "findings", "resolved", "date"],
+                "properties": {
+                  "tool": {
+                    "type": "string"
+                  },
+                  "findings": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "resolved": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "date": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
+                }
+              }
+            },
+            "certification": {
+              "type": "object",
+              "properties": {
+                "standard": {
+                  "type": "string",
+                  "enum": ["DO-178C", "DO-178B", "IEC-62304", "NONE"]
+                },
+                "level": {
+                  "type": "string",
+                  "enum": ["A", "B", "C", "D", "E", "N/A"]
+                },
+                "evidence": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date"
+                }
+              }
+            }
+          }
+        },
+        "deployment": {
+          "type": "object",
+          "properties": {
+            "targets": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["platform", "installation_date"],
+                "properties": {
+                  "platform": {
+                    "type": "string"
+                  },
+                  "vehicle": {
+                    "type": "string",
+                    "description": "Reference to AAMMPP asset"
+                  },
+                  "installation_date": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
+                }
+              }
+            },
+            "configuration": {
+              "type": "object",
+              "properties": {
+                "parameters": {
+                  "type": "object"
+                },
+                "environment": {
+                  "type": "string"
+                }
+              }
+            },
+            "rollback": {
+              "type": "object",
+              "properties": {
+                "capability": {
+                  "type": "boolean"
+                },
+                "last_good_version": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "compliance": {
+          "type": "object",
+          "properties": {
+            "do_178c": {
+              "type": "object",
+              "properties": {
+                "level": {
+                  "type": "string",
+                  "enum": ["A", "B", "C", "D", "E", "N/A"]
+                },
+                "evidence": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                },
+                "artifacts": {
+                  "type": "object"
+                }
+              }
+            },
+            "open_source": {
+              "type": "object",
+              "properties": {
+                "licenses": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "compliance_check": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "export_control": {
+              "type": "object",
+              "properties": {
+                "classification": {
+                  "type": "string",
+                  "enum": ["EAR99", "ITAR", "DUAL_USE", "NONE"]
+                },
+                "itar_ear": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "cryptographic": {
+          "type": "object",
+          "required": ["artifact_hash", "signature"],
+          "properties": {
+            "artifact_hash": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$",
+              "description": "SHA-256 hash of software artifact"
+            },
+            "signature": {
+              "type": "string",
+              "description": "GPG/code signing certificate signature"
+            },
+            "attestations": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "uri",
+                "description": "References to SLSA/in-toto attestations"
+              }
+            },
+            "utcs_bundle": {
+              "type": "string",
+              "format": "uri",
+              "description": "Reference to UTCS bundle"
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["created", "updated"],
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "version_number": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "issuer": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

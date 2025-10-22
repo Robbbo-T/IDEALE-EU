@@ -77,6 +77,8 @@ release:
 - [ ] 360PLUS demo
 - [ ] H$_2$/LH$_2$ model
 - [ ] Finance whitepaper
+- [ ] AMSDP platform architecture and schemas
+- [ ] AAMMPP platform architecture and schemas
 - [ ] Complete SBOM
 - [ ] Signed git tag
 - [ ] UTCS bundle

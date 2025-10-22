@@ -1,0 +1,400 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ideale-eu.org/schemas/aammpp/work_order.schema.json",
+  "title": "Work Order Schema",
+  "description": "Maintenance work order for aerospace assets",
+  "type": "object",
+  "required": ["work_order", "version"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Schema version (semantic versioning)"
+    },
+    "work_order": {
+      "type": "object",
+      "required": ["id", "type", "priority", "asset", "work_description", "status"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^AAMMPP-WO-\\d+$",
+          "description": "Unique work order identifier"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["SCHEDULED", "CORRECTIVE", "PREDICTIVE", "PREVENTIVE"],
+          "description": "Work order type"
+        },
+        "priority": {
+          "type": "string",
+          "enum": ["CRITICAL", "HIGH", "NORMAL", "LOW"],
+          "description": "Work order priority"
+        },
+        "asset": {
+          "type": "object",
+          "required": ["asset_id", "serial_number"],
+          "properties": {
+            "asset_id": {
+              "type": "string",
+              "description": "Reference to AAMMPP asset"
+            },
+            "serial_number": {
+              "type": "string"
+            },
+            "location": {
+              "type": "string"
+            }
+          }
+        },
+        "work_description": {
+          "type": "object",
+          "required": ["title", "description"],
+          "properties": {
+            "title": {
+              "type": "string",
+              "description": "Brief work order title"
+            },
+            "description": {
+              "type": "string",
+              "description": "Detailed work description"
+            },
+            "procedures": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "Reference to maintenance procedure"
+              }
+            },
+            "estimated_hours": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Estimated work hours"
+            },
+            "skills_required": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "Required skill codes"
+              }
+            }
+          }
+        },
+        "schedule": {
+          "type": "object",
+          "required": ["created"],
+          "properties": {
+            "created": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "scheduled_start": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "scheduled_end": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "actual_start": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "actual_end": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        },
+        "resources": {
+          "type": "object",
+          "properties": {
+            "technicians": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["name"],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "license": {
+                    "type": "string"
+                  },
+                  "hours": {
+                    "type": "number",
+                    "minimum": 0
+                  }
+                }
+              }
+            },
+            "materials": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["part_number", "quantity"],
+                "properties": {
+                  "part_number": {
+                    "type": "string"
+                  },
+                  "quantity": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "passport_id": {
+                    "type": "string",
+                    "description": "Reference to AMSDP passport"
+                  }
+                }
+              }
+            },
+            "tools": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["tool_id", "description"],
+                "properties": {
+                  "tool_id": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "facilities": {
+              "type": "string",
+              "description": "Required facilities or bays"
+            }
+          }
+        },
+        "inspection": {
+          "type": "object",
+          "properties": {
+            "inspection_type": {
+              "type": "string"
+            },
+            "inspector": {
+              "type": "string"
+            },
+            "findings": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["finding_id", "description", "severity"],
+                "properties": {
+                  "finding_id": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "severity": {
+                    "type": "string",
+                    "enum": ["CRITICAL", "MAJOR", "MINOR", "OBSERVATION"]
+                  }
+                }
+              }
+            },
+            "corrective_actions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["action_id", "description", "status"],
+                "properties": {
+                  "action_id": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": ["PLANNED", "IN_PROGRESS", "COMPLETED", "DEFERRED"]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "approval": {
+          "type": "object",
+          "properties": {
+            "technician_sign_off": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "license": {
+                  "type": "string"
+                },
+                "signature": {
+                  "type": "string"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            },
+            "inspector_sign_off": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "authorization": {
+                  "type": "string"
+                },
+                "signature": {
+                  "type": "string"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            },
+            "return_to_service": {
+              "type": "object",
+              "properties": {
+                "authorized_by": {
+                  "type": "string"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "conditions": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "documentation": {
+          "type": "object",
+          "properties": {
+            "photos": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "uri",
+                "description": "References to photo documentation"
+              }
+            },
+            "measurements": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["parameter", "value", "unit"],
+                "properties": {
+                  "parameter": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "number"
+                  },
+                  "unit": {
+                    "type": "string"
+                  },
+                  "limit": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "test_results": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["test_id", "result", "acceptance"],
+                "properties": {
+                  "test_id": {
+                    "type": "string"
+                  },
+                  "result": {
+                    "type": "string"
+                  },
+                  "acceptance": {
+                    "type": "string",
+                    "enum": ["PASS", "FAIL"]
+                  }
+                }
+              }
+            },
+            "amsdp_updates": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "References to AMSDP passport update IDs"
+              }
+            }
+          }
+        },
+        "status": {
+          "type": "string",
+          "enum": ["PLANNED", "IN_PROGRESS", "INSPECTION", "COMPLETED", "CANCELLED"],
+          "description": "Current work order status"
+        },
+        "cryptographic": {
+          "type": "object",
+          "required": ["hash"],
+          "properties": {
+            "hash": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$",
+              "description": "SHA-256 hash of work order"
+            },
+            "signatures": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["signer", "signature", "timestamp"],
+                "properties": {
+                  "signer": {
+                    "type": "string"
+                  },
+                  "signature": {
+                    "type": "string"
+                  },
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
+                }
+              }
+            },
+            "audit_trail": {
+              "type": "string",
+              "format": "uri",
+              "description": "Reference to audit trail"
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["created", "updated"],
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "version_number": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "updated_by": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

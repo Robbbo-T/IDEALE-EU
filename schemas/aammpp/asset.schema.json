@@ -1,0 +1,475 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ideale-eu.org/schemas/aammpp/asset.schema.json",
+  "title": "Asset Schema",
+  "description": "Aerospace asset tracking and lifecycle management",
+  "type": "object",
+  "required": ["asset", "version"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Schema version (semantic versioning)"
+    },
+    "asset": {
+      "type": "object",
+      "required": ["id", "type", "classification", "identity", "status"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^AAMMPP-ASSET-(AIRCRAFT|SPACECRAFT|AGENT|INFRASTRUCTURE|GSE)-[A-Z0-9]+$",
+          "description": "Unique asset identifier"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["AIRCRAFT", "SPACECRAFT", "AGENT", "INFRASTRUCTURE", "GSE"],
+          "description": "Asset type"
+        },
+        "classification": {
+          "type": "string",
+          "enum": ["PUBLIC", "RESTRICTED", "CONTROLLED"],
+          "description": "Data classification level"
+        },
+        "identity": {
+          "type": "object",
+          "required": ["designation", "serial_number", "manufacturer", "model"],
+          "properties": {
+            "designation": {
+              "type": "string",
+              "description": "Asset designation or name"
+            },
+            "serial_number": {
+              "type": "string",
+              "description": "Unique serial number"
+            },
+            "registration": {
+              "type": "string",
+              "description": "Registration number (if applicable)"
+            },
+            "manufacturer": {
+              "type": "string",
+              "description": "Manufacturer name"
+            },
+            "model": {
+              "type": "string",
+              "description": "Model designation"
+            },
+            "variant": {
+              "type": "string",
+              "description": "Variant designation"
+            }
+          }
+        },
+        "configuration": {
+          "type": "object",
+          "required": ["baseline"],
+          "properties": {
+            "baseline": {
+              "type": "string",
+              "description": "Configuration baseline identifier"
+            },
+            "modifications": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["mod_id", "date", "description", "status"],
+                "properties": {
+                  "mod_id": {
+                    "type": "string"
+                  },
+                  "date": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": ["PLANNED", "IN_PROGRESS", "COMPLETED", "CANCELLED"]
+                  }
+                }
+              }
+            },
+            "software_version": {
+              "type": "string",
+              "description": "Installed software version"
+            },
+            "hardware_revision": {
+              "type": "string",
+              "description": "Hardware revision"
+            }
+          }
+        },
+        "location": {
+          "type": "object",
+          "required": ["current"],
+          "properties": {
+            "current": {
+              "type": "object",
+              "required": ["facility"],
+              "properties": {
+                "facility": {
+                  "type": "string"
+                },
+                "hangar": {
+                  "type": "string"
+                },
+                "position": {
+                  "type": "string"
+                }
+              }
+            },
+            "history": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["location", "start_date"],
+                "properties": {
+                  "location": {
+                    "type": "string"
+                  },
+                  "start_date": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "end_date": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "reason": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "home_base": {
+              "type": "string",
+              "description": "Home base or primary location"
+            }
+          }
+        },
+        "status": {
+          "type": "object",
+          "required": ["operational"],
+          "properties": {
+            "operational": {
+              "type": "string",
+              "enum": ["ACTIVE", "MAINTENANCE", "GROUNDED", "STORAGE", "RETIRED"],
+              "description": "Current operational status"
+            },
+            "health": {
+              "type": "object",
+              "properties": {
+                "overall_score": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 100
+                },
+                "system_scores": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                  }
+                }
+              }
+            },
+            "availability": {
+              "type": "object",
+              "properties": {
+                "percentage": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 100
+                },
+                "hours_available": {
+                  "type": "number"
+                },
+                "hours_utilized": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        },
+        "utilization": {
+          "type": "object",
+          "properties": {
+            "flight_hours": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Total flight hours (for aircraft/spacecraft)"
+            },
+            "cycles": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Total cycles (for aircraft/spacecraft)"
+            },
+            "missions_completed": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "last_flight": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "next_scheduled": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        },
+        "maintenance": {
+          "type": "object",
+          "properties": {
+            "last_inspection": {
+              "type": "object",
+              "properties": {
+                "date": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "inspector": {
+                  "type": "string"
+                },
+                "findings": {
+                  "type": "string"
+                }
+              }
+            },
+            "next_due": {
+              "type": "object",
+              "properties": {
+                "date": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "hours_remaining": {
+                  "type": "number"
+                },
+                "cycles_remaining": {
+                  "type": "integer"
+                }
+              }
+            },
+            "open_items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["item_id", "description", "priority"],
+                "properties": {
+                  "item_id": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "priority": {
+                    "type": "string",
+                    "enum": ["CRITICAL", "HIGH", "NORMAL", "LOW"]
+                  },
+                  "due_date": {
+                    "type": "string",
+                    "format": "date"
+                  }
+                }
+              }
+            },
+            "deferred_items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["item_id", "description", "deferral_date"],
+                "properties": {
+                  "item_id": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "deferral_date": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "expiry": {
+                    "type": "string",
+                    "format": "date"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "documentation": {
+          "type": "object",
+          "properties": {
+            "technical_manual": {
+              "type": "string",
+              "format": "uri"
+            },
+            "maintenance_manual": {
+              "type": "string",
+              "format": "uri"
+            },
+            "illustrated_parts": {
+              "type": "string",
+              "format": "uri"
+            },
+            "wiring_diagrams": {
+              "type": "string",
+              "format": "uri"
+            },
+            "amsdp_passports": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "References to AMSDP passport IDs"
+              }
+            }
+          }
+        },
+        "ownership": {
+          "type": "object",
+          "required": ["owner"],
+          "properties": {
+            "owner": {
+              "type": "string",
+              "description": "Owning organization"
+            },
+            "operator": {
+              "type": "string",
+              "description": "Operating organization"
+            },
+            "custodian": {
+              "type": "string",
+              "description": "Responsible person"
+            },
+            "acquisition_date": {
+              "type": "string",
+              "format": "date"
+            },
+            "acquisition_cost": {
+              "type": "object",
+              "properties": {
+                "amount": {
+                  "type": "number"
+                },
+                "currency": {
+                  "type": "string",
+                  "pattern": "^[A-Z]{3}$"
+                }
+              }
+            }
+          }
+        },
+        "compliance": {
+          "type": "object",
+          "properties": {
+            "airworthiness": {
+              "type": "object",
+              "properties": {
+                "certificate": {
+                  "type": "string"
+                },
+                "authority": {
+                  "type": "string"
+                },
+                "expiry": {
+                  "type": "string",
+                  "format": "date"
+                }
+              }
+            },
+            "export_control": {
+              "type": "object",
+              "properties": {
+                "classification": {
+                  "type": "string",
+                  "enum": ["EAR99", "ITAR", "DUAL_USE", "NONE"]
+                },
+                "licenses": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "insurance": {
+              "type": "object",
+              "properties": {
+                "policy": {
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string"
+                },
+                "coverage": {
+                  "type": "number"
+                },
+                "expiry": {
+                  "type": "string",
+                  "format": "date"
+                }
+              }
+            }
+          }
+        },
+        "cryptographic": {
+          "type": "object",
+          "required": ["hash", "signature"],
+          "properties": {
+            "hash": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$",
+              "description": "SHA-256 hash of asset record"
+            },
+            "signature": {
+              "type": "string",
+              "description": "Digital signature"
+            },
+            "previous_hash": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$",
+              "description": "Hash of previous version (blockchain-style linking)"
+            },
+            "utcs_bundle": {
+              "type": "string",
+              "format": "uri",
+              "description": "Reference to UTCS bundle"
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["created", "updated"],
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "version_number": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "updated_by": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
